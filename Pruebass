@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castirales Floristería | Flores Exclusivas y Arreglos Elegantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        :root {
+            --primary: #e8a5a5; /* Rosa suave */
+            --primary-light: #f8d1d1; /* Rosa pastel */
+            --primary-lighter: #fcecec; /* Rosa muy claro para fondos */
+            --secondary: #a5c1a5; /* Verde pastel */
+            --accent: #d1e8d1; /* Verde pastel claro */
+            --light: #ffffff; /* Blanco */
+            --dark: #5a5a5a; /* Gris para texto */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.4s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(232, 165, 165, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(232, 165, 165, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #95b095;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .section-title h2:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        
+        .section-title p {
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary);
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text .tagline {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav ul li a:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-icon {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-left: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(232, 165, 165, 0.7), rgba(248, 209, 209, 0.7)), 
+                        url('/images/hero.jpg') center/cover no-repeat;
+            height: 85vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 300;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Featured Products */
+        .featured-products {
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .featured-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .featured-card {
+            background: var(--primary-lighter);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .featured-img {
+            height: 280px;
+            overflow: hidden;
+            background: var(--light);
+        }
+        
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .featured-card:hover .featured-img img {
+            transform: scale(1.05);
+        }
+        
+        .featured-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .featured-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+        
+        .featured-price {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .featured-rating {
+            color: #f9c74f;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Catalog Section */
+        .catalog {
+            background-color: rgba(232, 165, 165, 0.1);
+        }
+        
+        .catalog-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--light);
+            border: 1px solid #eee;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        
+        .product-card {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            background: var(--primary-lighter);
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+        
+        .product-info p {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            min-height: 60px;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .price {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .add-to-cart {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: var(--primary-lighter);
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .category-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .category-card p {
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, rgba(232, 165, 165, 0.1), rgba(248, 209, 209, 0.1));
+        }
+        
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin: 30px 0;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .testimonial-card:before {
+            content: "\201C";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.15;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 3px solid var(--primary-lighter);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to bottom, var(--light), #f9f9f9);
+            padding: 100px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            padding: 40px;
+            background: var(--light);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .contact-detail {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(232, 165, 165, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .contact-text p {
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 40px;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .hours-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            color: var(--dark);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 99;
+            transition: all 0.3s;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        
+        .footer-col p {
+            color: #ddd;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-family: inherit;
+        }
+        
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #d89292;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 8px 15px;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .featured-card, .product-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/522213387157" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/images/logo.png" alt="Castirales Floristería Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="brand">Castirales</span>
+                    <span class="tagline">Floristería</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#destacados">Destacados</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Flores que inspiran emociones</h1>
+                <p>En Castirales Floristería creamos arreglos únicos que transforman momentos ordinarios en experiencias extraordinarias.</p>
+                <div class="hero-buttons">
+                    <a href="#destacados" class="btn">Descubrir colección</a>
+                    <a href="https://wa.me/522213387157" class="btn btn-secondary">Pedir por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="destacados">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Más Vendidos</h2>
+                <p>Los arreglos florales que nuestros clientes adoran y recomiendan</p>
+            </div>
+            
+            <div class="featured-container">
+                <!-- Product 1: Ramo Graciela -->
+                <div class="featured-card">
+                    <div class="featured-badge">Más vendido</div>
+                    <div class="featured-img">
+                        <img src="/images/ramo-graciela.jpg" alt="Ramo Graciela">
+                    </div>
+                    <div class="featured-info">
+                        <h3>Ramo Graciela</h3>
+                        <div class="featured-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>50 Rosas en dos tonos y Gipsófilia</p>
+                        <div class="featured-price">$850</div>
+                        <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Graciela" class="btn">Pedir ahora</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Ramo Wendy -->
+                <div class="featured-card">
+                    <div class="featured-badge">Novedad</div>
+                    <div class="featured-img">
+                        <img src="/images/ramo-wendy.jpg" alt="Ramo Wendy">
+                    </div>
+                    <div class="featured-info">
+                        <h3>Ramo Wendy</h3>
+                        <div class="featured-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>50 Rosas en un tono, Gipsófilia y una Corona</p>
+                        <div class="featured-price">$900</div>
+                        <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Wendy" class="btn">Pedir ahora</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3: Ramo Amor Eterno -->
+                <div class="featured-card">
+                    <div class="featured-badge">Popular</div>
+                    <div class="featured-img">
+                        <img src="/images/ramo-amor-eterno.jpg" alt="Ramo Amor Eterno">
+                    </div>
+                    <div class="featured-info">
+                        <h3>Ramo Amor Eterno</h3>
+                        <div class="featured-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>200 Rosas en colores variados y una Corona</p>
+                        <div class="featured-price">$2,500</div>
+                        <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Amor%20Eterno" class="btn">Pedir ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categorias">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras Categorías</h2>
+                <p>Descubre nuestra variedad de arreglos florales para cada ocasión</p>
+            </div>
+            
+            <div class="categories-container">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-rose"></i>
+                    </div>
+                    <h3>Ramos de Rosas</h3>
+                    <p>Elegantes arreglos con rosas frescas en diferentes colores y combinaciones.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Ramos de Gerberas</h3>
+                    <p>Coloridos arreglos con gerberas frescas, perfectas para alegrar cualquier espacio.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Cajas de Flores</h3>
+                    <p>Originales cajas florales con rosas y complementos para regalos especiales.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Arreglos Especiales</h3>
+                    <p>Composiciones únicas con combinaciones de flores y elementos decorativos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalogo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Catálogo Completo</h2>
+                <p>Explora nuestra amplia selección de arreglos florales para cada ocasión</p>
+            </div>
+            
+            <div class="catalog-filters">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Rosas</button>
+                <button class="filter-btn">Gerberas</button>
+                <button class="filter-btn">Cajas</button>
+                <button class="filter-btn">Especiales</button>
+            </div>
+            
+            <div class="catalog-grid">
+                <!-- Ramo Wendy -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-wendy.jpg" alt="Ramo Wendy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Wendy</h3>
+                        <p>50 Rosas en un tono, Gipsófilia y una Corona</p>
+                        <div class="product-price">
+                            <span class="price">$900</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Graciela -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-graciela.jpg" alt="Ramo Graciela">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Graciela</h3>
+                        <p>50 Rosas en dos tonos y Gipsófilia</p>
+                        <div class="product-price">
+                            <span class="price">$850</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Nadia -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-nadia.jpg" alt="Ramo Nadia">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Nadia</h3>
+                        <p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
+                        <div class="product-price">
+                            <span class="price">$900</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Amor eterno -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-amor-eterno.jpg" alt="Ramo Amor eterno">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Amor eterno</h3>
+                        <p>200 Rosas en colores variados y una Corona</p>
+                        <div class="product-price">
+                            <span class="price">$2,500</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Pink -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-pink.jpg" alt="Ramo Pink">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Pink</h3>
+                        <p>50 Rosas</p>
+                        <div class="product-price">
+                            <span class="price">$750</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Daniela -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-daniela.jpg" alt="Ramo Daniela">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Daniela</h3>
+                        <p>150 rosas, Gipsófilia, Clavel, Mariposas y Listón con frase</p>
+                        <div class="product-price">
+                            <span class="price">$2,050</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Esmeralda -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-esmeralda.jpg" alt="Ramo Esmeralda">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Esmeralda</h3>
+                        <p>150 rosas, Gipsófilia, Corona y Listón con frase</p>
+                        <div class="product-price">
+                            <span class="price">$2,000</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regalo Sorpresa -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/regalo-sorpresa.jpg" alt="Regalo Sorpresa">
+                    </div>
+                    <div class="product-info">
+                        <h3>Regalo Sorpresa</h3>
+                        <p>Caja de Rosas, diseñada para contener un regalo sorpresa en el centro (Celular, dinero, etc...)</p>
+                        <div class="product-price">
+                            <span class="price">$750</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Alejandra -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-alejandra.jpg" alt="Ramo Alejandra">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Alejandra</h3>
+                        <p>12 Rosas con follaje</p>
+                        <div class="product-price">
+                            <span class="price">$400</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Consuelo -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-consuelo.jpg" alt="Ramo Consuelo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Consuelo</h3>
+                        <p>50 rosas y 10 chocolates</p>
+                        <div class="product-price">
+                            <span class="price">$850</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Abril -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-abril.jpg" alt="Ramo Abril">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Abril</h3>
+                        <p>Ramo de 50 Rosas con una Mariposa</p>
+                        <div class="product-price">
+                            <span class="price">$750</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caja Belén -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/caja-belen.jpg" alt="Caja Belén">
+                    </div>
+                    <div class="product-info">
+                        <h3>Caja Belén</h3>
+                        <p>50 rosas en dos tonos, 10 Chocolates Ferrero, 10 Kinder Delice</p>
+                        <div class="product-price">
+                            <span class="price">$1,900</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regalo Victoria -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/regalo-victoria.jpg" alt="Regalo Victoria">
+                    </div>
+                    <div class="product-info">
+                        <h3>Regalo Victoria</h3>
+                        <p>Rosas y 16 Chocolates Ferrero</p>
+                        <div class="product-price">
+                            <span class="price">$850</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Andrea -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-andrea.jpg" alt="Ramo Andrea">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Andrea</h3>
+                        <p>24 Rosas y 12 Gerberas</p>
+                        <div class="product-price">
+                            <span class="price">$800</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Estela -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-estela.jpg" alt="Ramo Estela">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Estela</h3>
+                        <p>30 Gerberas, siempre viva, eucalipto</p>
+                        <div class="product-price">
+                            <span class="price">$1,200</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Fanny -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-fanny.jpg" alt="Ramo Fanny">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Fanny</h3>
+                        <p>12 Gerberas, siempre viva, eucalipto</p>
+                        <div class="product-price">
+                            <span class="price">$880</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Julia -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-julia.jpg" alt="Ramo Julia">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Julia</h3>
+                        <p>6 Gerberas, follaje</p>
+                        <div class="product-price">
+                            <span class="price">$380</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Mari -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-mari.jpg" alt="Ramo Mari">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Mari</h3>
+                        <p>5 Gerberas, Gipsófilia</p>
+                        <div class="product-price">
+                            <span class="price">$350</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caja Lau -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/caja-lau.jpg" alt="Caja Lau">
+                    </div>
+                    <div class="product-info">
+                        <h3>Caja Lau</h3>
+                        <p>Caja de Gerberas</p>
+                        <div class="product-price">
+                            <span class="price">$700</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Carla -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-carla.jpg" alt="Ramo Carla">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Carla</h3>
+                        <p>12 Gerberas, 24 rosas, gipsófilia, Astromelia, Dolar</p>
+                        <div class="product-price">
+                            <span class="price">$1,400</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Rafa -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-rafa.jpg" alt="Ramo Rafa">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Rafa</h3>
+                        <p>Acapulco, Rosas, Astromelias, Follajes y Jarrón</p>
+                        <div class="product-price">
+                            <span class="price">$900</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo Aurea -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/arreglo-aurea.jpg" alt="Arreglo Aurea">
+                    </div>
+                    <div class="product-info">
+                        <h3>Arreglo Aurea</h3>
+                        <p>15 Rosas, Lisianthus, Mini Rosa, Follaje, Jarrón</p>
+                        <div class="product-price">
+                            <span class="price">$1,250</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Lexi -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-lexi.jpg" alt="Ramo Lexi">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Lexi</h3>
+                        <p>Flores Variadas</p>
+                        <div class="product-price">
+                            <span class="price">$490</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Lis -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-lis.jpg" alt="Ramo Lis">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Lis</h3>
+                        <p>Rosas, Acapulco y Follaje</p>
+                        <div class="product-price">
+                            <span class="price">$690</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Orquídea -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/orquidea.jpg" alt="Orquídea">
+                    </div>
+                    <div class="product-info">
+                        <h3>Orquídea</h3>
+                        <p>Orquídea más una Maceta</p>
+                        <div class="product-price">
+                            <span class="price">$850</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Elena -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-elena.jpg" alt="Ramo Elena">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Elena</h3>
+                        <p>40 Rosas y 10 Girasoles</p>
+                        <div class="product-price">
+                            <span class="price">$1,300</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Eva -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-eva.jpg" alt="Ramo Eva">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Eva</h3>
+                        <p>24 Rosas, 3 Girasoles y Margaritas</p>
+                        <div class="product-price">
+                            <span class="price">$750</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Romi -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-romi.jpg" alt="Ramo Romi">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Romi</h3>
+                        <p>8 Girasoles y Follaje</p>
+                        <div class="product-price">
+                            <span class="price">$500</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regalo Estela -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/regalo-estela.jpg" alt="Regalo Estela">
+                    </div>
+                    <div class="product-info">
+                        <h3>Regalo Estela</h3>
+                        <p>6 Girasoles, 15 Rosas y Follaje</p>
+                        <div class="product-price">
+                            <span class="price">$950</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Karen -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-karen.jpg" alt="Ramo Karen">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Karen</h3>
+                        <p>Lisianthus, 20 Rosas blancas y 2 Hortensia</p>
+                        <div class="product-price">
+                            <span class="price">$695</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Spider-Man -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-spider-man.jpg" alt="Ramo Spider-Man">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Spider-Man</h3>
+                        <p>14 Rosas y ojos de Spider-Man</p>
+                        <div class="product-price">
+                            <span class="price">$350</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ramo Barbie -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/images/ramo-barbie.jpg" alt="Ramo Barbie">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ramo Barbie</h3>
+                        <p>14 Rosas en dos tonos rosa, Imágenes de Barbie</p>
+                        <div class="product-price">
+                            <span class="price">$350</span>
+                            <div class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Experiencias reales de personas que han confiado en nuestros arreglos florales</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Las flores para mi boda fueron absolutamente impresionantes. El equipo de Castirales capturó exactamente la visión que tenía y superó todas mis expectativas. ¡Recomiendo totalmente sus servicios!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1376&q=80" alt="María González">
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Siempre envío flores a mi madre que vive en otra ciudad. La atención al cliente es excepcional y los arreglos llegan frescos y hermosos. ¡Mi madre está encantada cada vez!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Carlos Martínez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Martínez</h4>
+                            <p>Cliente recurrente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacta Con Nosotros</h2>
+                <p>Estamos aquí para ayudarte a encontrar el arreglo floral perfecto</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de contacto</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>WhatsApp</h4>
+                            <p>22-13-38-71-57</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>floristeria_castirales@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Dirección</h4>
+                            <p>Calle Flores, 123, Local 5, Ciudad Jardín</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 40px;">Horario de atención</h3>
+                    <ul class="hours-list">
+                        <li><span>Lunes a Viernes:</span> <span>9:00 - 20:00</span></li>
+                        <li><span>Sábados:</span> <span>10:00 - 18:00</span></li>
+                        <li><span>Domingos:</span> <span>11:00 - 14:00</span></li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 40px;">Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/floristeria_castirales/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/floristeria.castirales/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <img src="/images/logo.png" alt="Castirales Floristería Logo" style="width: 60px; height: 60px;">
+                        <div class="logo-text">
+                            <span class="brand" style="color: #f8f5f0;">Castirales</span>
+                            <span class="tagline" style="color: #a5c1a5;">Floristería</span>
+                        </div>
+                    </div>
+                    <p>Creando momentos especiales con flores frescas y diseños únicos desde 2015.</p>
+                    <p><a href="/catalogo.pdf" download>Descargar Catálogo PDF</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#destacados"><i class="fas fa-chevron-right"></i> Destacados</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Catálogo</a></li>
+                        <li><a href="#categorias"><i class="fas fa-chevron-right"></i> Categorías</a></li>
+                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Productos Populares</h3>
+                    <ul class="footer-links">
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Graciela</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Wendy</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Amor Eterno</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Caja Belén</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Elena</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Boletín informativo</h3>
+                    <p>Suscríbete para recibir ofertas exclusivas, novedades y consejos para el cuidado de tus flores.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Castirales Floristería. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
