@@ -701,7 +701,7 @@
             color: white;
             font-size: 2.2rem;
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            z-index: 99;
+            z-index: 90;
             transition: all 0.3s;
             text-decoration: none;
             animation: pulse 2s infinite;
@@ -1198,7 +1198,121 @@
                 bottom: 100px;
             }
         }
-    </style>
+    
+/* Ajustes para evitar solapamiento y mejorar aspecto del logo negro */
+.bot-wrap { z-index: 99999; 
+  bottom: 190px !important;
+
+  right: 20px !important;!important;
+}
+
+/* Asegura que el chatbot esté por encima visualmente y no toque el WhatsApp */
+.bot-wrap, .bot-toggle {
+  z-index: 99999 !important;
+}
+
+/* Estilos para logos: si pones el logo en negro, ajustamos el contenedor para que no desentone */
+.site-logo img, .logo img, .brand img, header .logo img {
+  filter: none !important;
+  max-height: 56px;
+  height: auto;
+  width: auto;
+  display: inline-block;
+}
+
+/* Si el logo es negro, usamos un color neutro para textos cercanos y un acento suave */
+.site-logo, .logo, .brand {
+  color: #222222;
+  opacity: 0.95;
+}
+
+/* Pequeños acentos que combinan con el rosa del botón sin competir */
+.header-accent, .nav-accent {
+  color: var(--bubble-gum);
+  border-color: rgba(226,122,165,0.12);
+}
+
+
+/* --- Cambio: barra superior (header) color que combine con el rosa sin desentonar --- */
+header, .topbar, .top-bar, .site-header, .header {
+  background-color: #f4f5f7 !important; /* tono azul grisáceo profundo */
+  color: #222222 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Asegura que enlaces y texto en la cabecera sean legibles */
+header a, .topbar a, .top-bar a, .site-header a, .header a {
+  color: rgba(34,34,34,0.95) !important;
+}
+
+/* Si hay botones en la cabecera, darles un borde sutil */
+header .btn, .topbar .btn, .site-header .btn {
+  border-color: rgba(255,255,255,0.06) !important;
+  color: #222222 !important;
+  background: transparent !important;
+}
+
+
+/* Subir el chatbot para que quede arriba del carrito flotante */
+.bot-wrap { bottom: 185px !important; right: 18px !important; z-index: 99999 !important; }
+
+/* Mantener el botón con z-index alto y tamaño coherente */
+.bot-toggle { z-index: 99999 !important; width: 70px !important; height: 70px !important; }
+
+
+/* Footer elegante oscuro pero no agresivo */
+footer, .site-footer, .footer {
+  background-color: #2e2f38 !important; /* azul grisáceo oscuro */
+  color: #f2f2f2 !important;
+}
+
+footer a, .site-footer a, .footer a {
+  color: #f2f2f2 !important;
+}
+
+footer h2, footer h3, footer h4, footer h5, footer h6,
+.site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6 {
+  color: var(--bubble-gum) !important;
+}
+
+
+/* Alineación uniforme botones flotantes */
+.bot-wrap { right: 18px !important; }
+.bot-toggle, .floating-cart, .whatsapp-button {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* Alineación vertical perfecta de botones flotantes */
+.bot-wrap, .floating-cart, .whatsapp-button {
+  position: fixed !important;
+  right: 18px !important;
+}
+
+.bot-toggle, .floating-cart, .whatsapp-button {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Eliminar cualquier sombra/margen que provoque desalineo */
+.bot-wrap {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+</style>
 </head>
 <body>
     <!-- WhatsApp Button -->
@@ -2363,23 +2477,34 @@ if (typeof updateCart === 'function') {
   }
 
   /* Toggle botón con animación entre --accent y --whatsapp */
-  .bot-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
-  .bot-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--bubble-gum);
-    color:#fff;
-    border:none;
-    box-shadow:0 10px 30px rgba(0,0,0,0.18);
-    cursor:pointer;
-    font-size:22px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition: transform .18s ease, box-shadow .18s ease;
-    animation: colorShift 3s infinite alternate ease-in-out;
-  }
+  .bot-wrap { position: fixed; right: 18px; bottom: 110px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
+  
+/* --- REEMPLAZAR: estilos previos de .bot-toggle --- */
+
+/* Botón del Chatbot — igual estilo que el carrito */
+.bot-toggle {
+  width: 70px;               /* igual tamaño que .floating-cart */
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bubble-gum); /* mismo rosa que carrito */
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  /* conservar posicionamiento por .bot-wrap (ajustado por JS) */
+}
+
+/* Hover — sutil intensificado como el carrito */
+.bot-toggle:hover {
+  transform: scale(1.08);
+  background-color: #e27aa5; /* rosa ligeramente más intenso al hover */
+}
+
   .bot-toggle:active { transform: scale(.96) }
   @keyframes colorShift {
     0% { background: var(--accent); box-shadow: 0 10px 30px rgba(168,50,121,0.2); }
@@ -2405,7 +2530,10 @@ if (typeof updateCart === 'function') {
 
 <div class="bot-wrap" id="botWrap" aria-live="polite">
   <div style="display:flex; gap:10px; align-items:flex-end;">
-    <button class="bot-toggle" id="botToggle" title="Abrir chat">💬</button>
+    <!-- Reemplazar el contenido del botón del bot por este (ícono FontAwesome) -->
+<button class="bot-toggle" id="botToggle" title="Abrir chat" aria-label="Abrir chat">
+  <i class="fas fa-comment-dots" aria-hidden="true"></i>
+</button>
   </div>
 
   <div id="botPanel" style="display:none; margin-top:10px;">
@@ -2563,6 +2691,17 @@ function transferPay(prodEncoded) {
 /* Enter para enviar */
 botInput.addEventListener('keypress', function(e){
   if (e.key === 'Enter') botSend();
+});
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const botToggle = document.getElementById('botToggle');
+  if (botToggle && botToggle.innerText.trim() === '💬') {
+    botToggle.innerHTML = '<i class="fas fa-comment-dots" aria-hidden="true"></i>';
+  }
 });
 </script>
 
