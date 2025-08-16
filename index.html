@@ -1869,45 +1869,18 @@ Spider-Man</p>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Lo Que Dicen Nuestros Clientes</h2>
-                <p>Experiencias reales de personas que han confiado en nuestros arreglos florales</p>
-            </div>
-            
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Las flores para mi boda fueron absolutamente impresionantes. El equipo de Castirales capturó exactamente la visión que tenía y superó todas mis expectativas. ¡Recomiendo totalmente sus servicios!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1376&q=80" alt="María González">
-                        </div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <p>Cliente desde 2021</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Siempre envío flores a mi madre que vive en otra ciudad. La atención al cliente es excepcional y los arreglos llegan frescos y hermosos. ¡Mi madre está encantada cada vez!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Carlos Martínez">
-                        </div>
-                        <div class="author-info">
-                            <h4>Carlos Martínez</h4>
-                            <p>Cliente recurrente</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
-    <section class="contact" id="contacto">
+    
+<!-- Price reference note inserted by TOEBO -->
+<section class="price-note" aria-hidden="false" style="padding:30px 0; background:transparent;">
+  <div class="container" style="text-align:center;">
+    <p style="display:inline-block; background:rgba(255,255,255,0.9); padding:12px 18px; border-radius:12px; border:1px solid rgba(0,0,0,0.06); color:var(--dark); font-weight:600;">
+      Precios de referencia — consulte para más información.
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
         <div class="container">
             <div class="section-title">
                 <h2>Contacta Con Nosotros</h2>
@@ -2278,22 +2251,33 @@ Spider-Man</p>
 <!-- Added: Cart to WhatsApp and bot positioning helpers -->
 <script>
 /* Generate WhatsApp message from cart */
+
+/* Generate WhatsApp message from cart - single-line friendly (no visible %0A) */
 function generateWhatsAppCart() {
-  if (typeof cart === 'undefined' || !Array.isArray(cart)) return 'https://wa.me/522213387157';
-  let total = 0;
-  let lines = [];
-  lines.push('🛒 *Mi pedido en Castirales Floristería*%0A%0A');
-  cart.forEach(item => {
-    const itemTotal = (item.price * item.quantity) || 0;
-    total += itemTotal;
-    // sanitize title
-    const title = item.title || item.name || 'Producto';
-    lines.push(`- ${item.quantity}x ${title}: $${itemTotal}%0A`);
-  });
-  lines.push(`%0A💰 *Total: $${total}*`);
-  const message = lines.join('');
-  return `https://wa.me/522213387157?text=${encodeURIComponent(message)}`;
+  try {
+    if (typeof cart === 'undefined' || !Array.isArray(cart) || cart.length === 0) {
+      return 'https://wa.me/522213387157';
+    }
+    let total = 0;
+    const parts = [];
+    parts.push('🛒 Mi pedido en Castirales Floristería');
+    cart.forEach(item => {
+      const qty = item.quantity || item.qty || 1;
+      const price = Number(item.price || item.unitPrice || 0);
+      const itemTotal = price * qty;
+      total += itemTotal;
+      const title = item.title || item.name || 'Producto';
+      parts.push(`- ${qty}x ${title}: $${itemTotal}`);
+    });
+    parts.push(`Total: $${total}`);
+    const message = parts.join('  ');
+    return `https://wa.me/522213387157?text=${encodeURIComponent(message)}`;
+  } catch (e) {
+    console.error('generateWhatsAppCart error', e);
+    return 'https://wa.me/522213387157';
+  }
 }
+
 
 /* Update Buy button href if exists */
 function updateBuyButtonHref() {
@@ -2308,22 +2292,47 @@ function updateBuyButtonHref() {
 }
 
 /* Ensure bot toggle does not overlap with floating UI buttons */
+
+/* Improved adjustBotPosition: finds fixed elements and moves bot above them or left if needed */
 function adjustBotPosition() {
   const botWrap = document.getElementById('botWrap');
   if (!botWrap) return;
-  const selectors = ['.whatsapp-button', '.floating-cart', '.cart-actions .btn']; // possible floating elements
-  let maxBottom = 18;
-  selectors.forEach(sel => {
-    const el = document.querySelector(sel);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      // compute approximate space from bottom: element height + 24px gap
-      const height = rect.height || el.offsetHeight || 60;
-      if ((height + 24) > maxBottom) maxBottom = height + 24;
+  const margin = 18;
+  let bottomOffset = margin;
+  let rightOffset = margin;
+
+  const fixedEls = Array.from(document.querySelectorAll('body *')).filter(el => {
+    try {
+      const s = window.getComputedStyle(el);
+      return s.position === 'fixed' && el.offsetParent !== null && el !== botWrap;
+    } catch (e) { return false; }
+  });
+
+  fixedEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    const nearBottom = (r.bottom > window.innerHeight - 160);
+    const nearRight = (r.right > window.innerWidth - 160);
+    if (nearBottom && nearRight) {
+      const neededBottom = (window.innerHeight - r.top) + 12;
+      if (neededBottom > bottomOffset) bottomOffset = neededBottom;
+    } else if (nearBottom && r.right > window.innerWidth / 2) {
+      const neededBottom = (window.innerHeight - r.top) + 12;
+      if (neededBottom > bottomOffset) bottomOffset = neededBottom;
+    } else if (nearRight && r.bottom > window.innerHeight / 2) {
+      const neededRight = (window.innerWidth - r.left) + 12;
+      if (neededRight > rightOffset) rightOffset = neededRight;
     }
   });
-  botWrap.style.bottom = (maxBottom + 12) + 'px';
+
+  botWrap.style.bottom = Math.max(12, bottomOffset) + 'px';
+  botWrap.style.right = Math.max(12, rightOffset) + 'px';
+
+  const rect = botWrap.getBoundingClientRect();
+  if (rect.right > window.innerWidth - 6) {
+    botWrap.style.right = (window.innerWidth - rect.width - 12) + 'px';
+  }
 }
+
 
 /* Call adjust on load and resize, and update buy href whenever cart updates */
 document.addEventListener('DOMContentLoaded', function() {
@@ -2359,7 +2368,7 @@ if (typeof updateCart === 'function') {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--bubble-gum);
     color:#fff;
     border:none;
     box-shadow:0 10px 30px rgba(0,0,0,0.18);
