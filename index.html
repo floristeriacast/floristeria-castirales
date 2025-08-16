@@ -1227,7 +1227,7 @@
         </div>
         <div class="cart-actions">
             <a href="#" class="btn btn-secondary">Ver Carrito</a>
-            <a href="https://wa.me/522213387157" class="btn">Comprar</a>
+            <a id="buyWhatsappBtn" href="https://wa.me/522213387157" class="btn">Comprar</a>
         </div>
     </div>
     
@@ -2274,6 +2274,74 @@ Spider-Man</p>
         document.addEventListener('DOMContentLoaded', init);
     </script>
 
+
+<!-- Added: Cart to WhatsApp and bot positioning helpers -->
+<script>
+/* Generate WhatsApp message from cart */
+function generateWhatsAppCart() {
+  if (typeof cart === 'undefined' || !Array.isArray(cart)) return 'https://wa.me/522213387157';
+  let total = 0;
+  let lines = [];
+  lines.push('🛒 *Mi pedido en Castirales Floristería*%0A%0A');
+  cart.forEach(item => {
+    const itemTotal = (item.price * item.quantity) || 0;
+    total += itemTotal;
+    // sanitize title
+    const title = item.title || item.name || 'Producto';
+    lines.push(`- ${item.quantity}x ${title}: $${itemTotal}%0A`);
+  });
+  lines.push(`%0A💰 *Total: $${total}*`);
+  const message = lines.join('');
+  return `https://wa.me/522213387157?text=${encodeURIComponent(message)}`;
+}
+
+/* Update Buy button href if exists */
+function updateBuyButtonHref() {
+  const btn = document.getElementById('buyWhatsappBtn');
+  if (!btn) return;
+  try {
+    const link = generateWhatsAppCart();
+    btn.setAttribute('href', link);
+  } catch(e){
+    console.error('Error updating buy button href', e);
+  }
+}
+
+/* Ensure bot toggle does not overlap with floating UI buttons */
+function adjustBotPosition() {
+  const botWrap = document.getElementById('botWrap');
+  if (!botWrap) return;
+  const selectors = ['.whatsapp-button', '.floating-cart', '.cart-actions .btn']; // possible floating elements
+  let maxBottom = 18;
+  selectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      // compute approximate space from bottom: element height + 24px gap
+      const height = rect.height || el.offsetHeight || 60;
+      if ((height + 24) > maxBottom) maxBottom = height + 24;
+    }
+  });
+  botWrap.style.bottom = (maxBottom + 12) + 'px';
+}
+
+/* Call adjust on load and resize, and update buy href whenever cart updates */
+document.addEventListener('DOMContentLoaded', function() {
+  updateBuyButtonHref();
+  adjustBotPosition();
+});
+window.addEventListener('resize', adjustBotPosition);
+
+// If updateCart function exists, wrap it to also update buy button after runs
+if (typeof updateCart === 'function') {
+  const origUpdateCart = updateCart;
+  updateCart = function() {
+    origUpdateCart();
+    try { updateBuyButtonHref(); } catch(e){console.error(e)}
+  }
+}
+</script>
+<!-- End Added -->
 <!-- BOT FAQ INTEGRADO (COLOR DEL CARRITO + ANIMACIÓN ROSA<->VERDE) -->
 <style>
   :root{
