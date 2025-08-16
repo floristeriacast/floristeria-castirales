@@ -2273,5 +2273,221 @@ Spider-Man</p>
         // Inicializar cuando el DOM esté cargado
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+<!-- BOT FAQ INTEGRADO (COLOR DEL CARRITO + ANIMACIÓN ROSA<->VERDE) -->
+<style>
+  :root{
+    --rosa:#F3A2BE;
+    --menta:#C6E6E3;
+    --celeste:#F0F9F8;
+    --accent:#a83279; /* color del carrito / color base */
+    --whatsapp:#25D366;
+    --text:#111;
+  }
+
+  /* Toggle botón con animación entre --accent y --whatsapp */
+  .bot-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
+  .bot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent);
+    color:#fff;
+    border:none;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    cursor:pointer;
+    font-size:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: transform .18s ease, box-shadow .18s ease;
+    animation: colorShift 3s infinite alternate ease-in-out;
+  }
+  .bot-toggle:active { transform: scale(.96) }
+  @keyframes colorShift {
+    0% { background: var(--accent); box-shadow: 0 10px 30px rgba(168,50,121,0.2); }
+    50% { background: linear-gradient(135deg, var(--rosa), var(--whatsapp)); box-shadow: 0 12px 36px rgba(37,211,102,0.14); }
+    100% { background: var(--whatsapp); box-shadow: 0 12px 36px rgba(37,211,102,0.22); }
+  }
+
+  /* resto estilos del panel (sin cambios salvo colores) */
+  .bot-panel { width: 340px; max-width: calc(100vw - 40px); height: 460px; background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.15); overflow:hidden; display:flex; flex-direction:column; }
+  .bot-header { background: linear-gradient(90deg,var(--rosa),var(--menta)); color:var(--text); padding:12px 14px; font-weight:700; display:flex; align-items:center; gap:10px; }
+  .bot-body { flex:1; padding:12px; overflow:auto; background: var(--celeste); }
+  .bot-footer { padding:8px; border-top:1px solid #eee; display:flex; gap:8px; align-items:center; }
+  .bot-msg { margin:8px 0; padding:8px 12px; border-radius:12px; max-width:85%; line-height:1.3; display:inline-block; }
+  .msg-bot { background:#fff; align-self:flex-start; color:var(--text); box-shadow:0 4px 10px rgba(0,0,0,0.04); }
+  .msg-user { background:#ffeef6; align-self:flex-end; color:var(--text); }
+  .quick-btn { display:inline-block; background:#fff; border:1px solid rgba(0,0,0,0.06); padding:6px 8px; margin:6px 6px 0 0; border-radius:8px; cursor:pointer; font-size:13px; }
+  .action-btn { background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:600; }
+  .small-link { color:var(--accent); text-decoration:underline; cursor:pointer; font-size:13px; }
+  .bot-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #ddd; outline:none; }
+  .bot-footer button.send { background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+  @media (max-width:420px){ .bot-panel{ width:92vw; height:70vh } }
+</style>
+
+<div class="bot-wrap" id="botWrap" aria-live="polite">
+  <div style="display:flex; gap:10px; align-items:flex-end;">
+    <button class="bot-toggle" id="botToggle" title="Abrir chat">💬</button>
+  </div>
+
+  <div id="botPanel" style="display:none; margin-top:10px;">
+    <div class="bot-panel" role="dialog" aria-label="Asistente de ayuda">
+      <div class="bot-header">
+        <div style="width:36px;height:36px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">🌸</div>
+        <div>
+          <div style="font-weight:800">Floristería Castirales</div>
+          <div style="font-size:12px;color:#333">Asistente • Preguntas frecuentes</div>
+        </div>
+      </div>
+
+      <div class="bot-body" id="botBody">
+        <div class="bot-msg msg-bot">
+          Hola 👋, soy el asistente de Castirales. Puedes probar:
+          <button class="quick-btn" onclick="botQuick('horario')">horario</button>
+          <button class="quick-btn" onclick="botQuick('envios')">envíos</button>
+          <button class="quick-btn" onclick="botQuick('pagos')">formas de pago</button>
+          <button class="quick-btn" onclick="botQuick('reservar')">reservas</button>
+          <button class="quick-btn" onclick="botQuick('personalizar')">personalizar</button>
+        </div>
+      </div>
+
+      <div class="bot-footer">
+        <input id="botInput" class="bot-input" placeholder="Escribe tu pregunta o 'comprar Ramo Primavera'...">
+        <button class="send" onclick="botSend()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIG POR DEFECTO (ya con tu número) ===== */
+const waNumber = '522213387157'; // México: 52 + lada + número (sin espacios)
+const businessName = 'Floristería Castirales';
+/* =============================================== */
+
+/* Respuestas (palabras clave) */
+const faq = [
+  { keys: ['horario','horarios','hora'], text: '🕒 Horario: Lunes a Sábado, 9:00 – 20:00. Domingo cerrado.' },
+  { keys: ['ubicacion','donde','dirección','direccion'], text: '📍 Ubicación: Puebla, Pue. Escríbenos tu colonia por WhatsApp y te decimos si hacemos entrega.' },
+  { keys: ['envio','envios','entrega','entregas','domicilio','domicilios'], text: '🚚 Realizamos entregas dentro de Puebla y zonas cercanas. El costo depende de la colonia — escríbenos tu dirección exacta por WhatsApp para darte el precio.' },
+  { keys: ['pagos','pago','formas de pago','tarjeta','transferencia','efectivo'], text: '💳 Aceptamos EFECTIVO y TRANSFERENCIAS bancarias. Para transferencias te enviamos los datos por WhatsApp.' },
+  { keys: ['factura','facturacion','facturar','facturación'], text: '🔔 Importante: No emitimos facturas.' },
+  { keys: ['reservar','reserva','reservas','pedido anticipado','anticipacion'], text: '📅 Reservas: Aceptamos pedidos con 1 día de anticipación. Para eventos grandes recomendamos 7 días mínimo.' },
+  { keys: ['personalizar','personalización','personalizarlo','personalizados'], text: '✨ Hacemos arreglos personalizados según colores, presupuesto y ocasión. Cuéntanos la idea y te armamos una propuesta.' },
+  { keys: ['descuento','promocion','promoción','oferta'], text: '🎁 Promociones y descuentos: Pregunta por nuestras promos vigentes en WhatsApp y te damos los detalles.' },
+  { keys: ['testimonio','testimonios','opiniones'], text: '⭐ Testimonios: Nuestros clientes destacan calidad y puntualidad. ¿Quieres ver ejemplos?' }
+];
+
+/* Utilidades UI */
+const botToggle = document.getElementById('botToggle');
+const botPanel = document.getElementById('botPanel');
+const botBody = document.getElementById('botBody');
+const botInput = document.getElementById('botInput');
+
+botToggle.addEventListener('click', ()=> {
+  if (botPanel.style.display === 'none' || botPanel.style.display === '') {
+    botPanel.style.display = 'block';
+    setTimeout(()=> botInput.focus(), 200);
+  } else {
+    botPanel.style.display = 'none';
+  }
+});
+
+function addBot(html) {
+  const d = document.createElement('div');
+  d.className = 'bot-msg msg-bot';
+  d.innerHTML = html;
+  botBody.appendChild(d);
+  botBody.scrollTop = botBody.scrollHeight;
+}
+
+function addUser(txt) {
+  const d = document.createElement('div');
+  d.className = 'bot-msg msg-user';
+  d.innerText = txt;
+  botBody.appendChild(d);
+  botBody.scrollTop = botBody.scrollHeight;
+}
+
+function botQuick(key) {
+  botInput.value = key;
+  botSend();
+}
+
+function waUrl(text) {
+  return `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+}
+
+/* Principal: manejo de envío */
+function botSend() {
+  const raw = botInput.value.trim();
+  if (!raw) return;
+  addUser(raw);
+  botInput.value = '';
+
+  const text = raw.toLowerCase();
+
+  // 1) Si cliente escribe "comprar <producto>" o "quiero comprar <producto>"
+  const comprarMatch = text.match(/(?:comprar|quiero comprar|pedido|ordenar|compré|poner pedido)\s+(.+)/i);
+  if (comprarMatch) {
+    const producto = comprarMatch[1].trim();
+    const pre = `Hola, quiero pedir: ${producto}. ¿Está disponible? (Reservar / Transferencia / Efectivo)`;
+    addBot(`Perfecto, te conecto con nosotras para confirmar disponibilidad.<br><br>
+      <a class="small-link" href="${waUrl(pre)}" target="_blank">➡️ Confirmar por WhatsApp</a>
+      &nbsp;&nbsp;
+      <button class="action-btn" onclick="reserveProduct('${encodeURIComponent(producto)}')">Reservar</button>
+      &nbsp;
+      <button class="action-btn" style="background:#2b8f64" onclick="transferPay('${encodeURIComponent(producto)}')">Pagar (Transferencia)</button>
+    `);
+    return;
+  }
+
+  // 2) Buscar coincidencias en faq
+  let found = false;
+  for (let i=0;i<faq.length;i++){
+    for (let k of faq[i].keys) {
+      if (text.includes(k)) {
+        let extra = '';
+        if (['envio','envios','entrega','entregas','domicilio','domicilios'].some(x=> text.includes(x))) {
+          extra = `<br><br><a class="small-link" href="${waUrl('Hola, quiero preguntar por envíos a mi dirección: ')}" target="_blank">Hablar por WhatsApp</a>`;
+        } else if (['descuento','promocion','promoción','oferta'].some(x=> text.includes(x))) {
+          extra = `<br><br><a class="small-link" href="${waUrl('Hola, quiero información sobre promociones y descuentos')}">Ver descuentos por WhatsApp</a>`;
+        } else {
+          extra = `<br><br><a class="small-link" href="${waUrl('Hola, necesito más info, por favor')}">Hablar con humana por WhatsApp</a>`;
+        }
+        addBot(faq[i].text + extra);
+        found = true;
+        break;
+      }
+    }
+    if (found) break;
+  }
+
+  // 3) Si no encontró, ofrecer fallback a WhatsApp
+  if (!found) {
+    addBot(`Lo siento, no entendí 😅. ¿Quieres que te conecte con una vendedora por WhatsApp?<br><br>
+      <a class="small-link" href="${waUrl('Hola, quiero atención personalizada, por favor')}">Sí, llevarme a WhatsApp</a>`);
+  }
+}
+
+function reserveProduct(prodEncoded) {
+  const producto = decodeURIComponent(prodEncoded);
+  const msg = `Hola, quiero RESERVAR: ${producto}. Por favor confirmen disponibilidad y tiempo de entrega.`;
+  window.open(waUrl(msg), '_blank');
+}
+
+function transferPay(prodEncoded) {
+  const producto = decodeURIComponent(prodEncoded);
+  const msg = `Hola, quiero pagar por TRANSFERENCIA el producto: ${producto}. Por favor envíenme los datos bancarios y pasos a seguir.`;
+  window.open(waUrl(msg), '_blank');
+}
+
+/* Enter para enviar */
+botInput.addEventListener('keypress', function(e){
+  if (e.key === 'Enter') botSend();
+});
+</script>
+
 </body>
 </html>
