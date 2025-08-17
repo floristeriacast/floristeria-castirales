@@ -701,7 +701,7 @@
             color: white;
             font-size: 2.2rem;
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            z-index: 99;
+            z-index: 90;
             transition: all 0.3s;
             text-decoration: none;
             animation: pulse 2s infinite;
@@ -1198,7 +1198,121 @@
                 bottom: 100px;
             }
         }
-    </style>
+    
+/* Ajustes para evitar solapamiento y mejorar aspecto del logo negro */
+.bot-wrap { z-index: 99999; 
+  bottom: 190px !important;
+
+  right: 20px !important;!important;
+}
+
+/* Asegura que el chatbot esté por encima visualmente y no toque el WhatsApp */
+.bot-wrap, .bot-toggle {
+  z-index: 99999 !important;
+}
+
+/* Estilos para logos: si pones el logo en negro, ajustamos el contenedor para que no desentone */
+.site-logo img, .logo img, .brand img, header .logo img {
+  filter: none !important;
+  max-height: 56px;
+  height: auto;
+  width: auto;
+  display: inline-block;
+}
+
+/* Si el logo es negro, usamos un color neutro para textos cercanos y un acento suave */
+.site-logo, .logo, .brand {
+  color: #222222;
+  opacity: 0.95;
+}
+
+/* Pequeños acentos que combinan con el rosa del botón sin competir */
+.header-accent, .nav-accent {
+  color: var(--bubble-gum);
+  border-color: rgba(226,122,165,0.12);
+}
+
+
+/* --- Cambio: barra superior (header) color que combine con el rosa sin desentonar --- */
+header, .topbar, .top-bar, .site-header, .header {
+  background-color: #f4f5f7 !important; /* tono azul grisáceo profundo */
+  color: #222222 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Asegura que enlaces y texto en la cabecera sean legibles */
+header a, .topbar a, .top-bar a, .site-header a, .header a {
+  color: rgba(34,34,34,0.95) !important;
+}
+
+/* Si hay botones en la cabecera, darles un borde sutil */
+header .btn, .topbar .btn, .site-header .btn {
+  border-color: rgba(255,255,255,0.06) !important;
+  color: #222222 !important;
+  background: transparent !important;
+}
+
+
+/* Subir el chatbot para que quede arriba del carrito flotante */
+.bot-wrap { bottom: 185px !important; right: 18px !important; z-index: 99999 !important; }
+
+/* Mantener el botón con z-index alto y tamaño coherente */
+.bot-toggle { z-index: 99999 !important; width: 70px !important; height: 70px !important; }
+
+
+/* Footer elegante oscuro pero no agresivo */
+footer, .site-footer, .footer {
+  background-color: #2e2f38 !important; /* azul grisáceo oscuro */
+  color: #f2f2f2 !important;
+}
+
+footer a, .site-footer a, .footer a {
+  color: #f2f2f2 !important;
+}
+
+footer h2, footer h3, footer h4, footer h5, footer h6,
+.site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6 {
+  color: var(--bubble-gum) !important;
+}
+
+
+/* Alineación uniforme botones flotantes */
+.bot-wrap { right: 18px !important; }
+.bot-toggle, .floating-cart, .whatsapp-button {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* Alineación vertical perfecta de botones flotantes */
+.bot-wrap, .floating-cart, .whatsapp-button {
+  position: fixed !important;
+  right: 18px !important;
+}
+
+.bot-toggle, .floating-cart, .whatsapp-button {
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Eliminar cualquier sombra/margen que provoque desalineo */
+.bot-wrap {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+</style>
 </head>
 <body>
     <!-- WhatsApp Button -->
@@ -1940,304 +2054,7 @@ Spider-Man</p>
     </section>
 
     <!-- Footer -->
-    
-<!-- Sección añadida: catálogo completo de ramos y cajas (generado automáticamente) -->
-<section id="catalogo-completo" class="catalog-grid section">
-  <div class="container">
-    <h2>Catálogo completo</h2>
-    <p class="lead">Aquí encontrarás nuestra selección completa de ramos, cajas y arreglos. Cada producto incluye su descripción profesional, imagen y precio sugerido.</p>
-    <div class="catalog-grid-inner">
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-graciela.jpg" alt="Ramo Graciela" loading="lazy"></div>
-        <h3 class="product-title">Ramo Graciela</h3>
-        <p class="product-desc">Composición elegante con 50 rosas bicolor y delicadas gipsófilas. Ideal para aniversarios.</p>
-        <div class="product-meta"><div class='price'>$850</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-wendy.jpg" alt="Ramo Wendy" loading="lazy"></div>
-        <h3 class="product-title">Ramo Wendy</h3>
-        <p class="product-desc">Arreglo clásico de 50 rosas en un tono, realzado con gipsófilas y corona floral.</p>
-        <div class="product-meta"><div class='price'>$900</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-nadia.jpg" alt="Ramo Nadia" loading="lazy"></div>
-        <h3 class="product-title">Ramo Nadia</h3>
-        <p class="product-desc">50 rosas bicolor combinadas con gipsófilas y mariposas decorativas.</p>
-        <div class="product-meta"><div class='price'>$900</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-amor-eterno.jpg" alt="Ramo Amor Eterno" loading="lazy"></div>
-        <h3 class="product-title">Ramo Amor Eterno</h3>
-        <p class="product-desc">Impresionante despliegue de 200 rosas multicolor con corona central.</p>
-        <div class="product-meta"><div class='price'>$2,500</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-pink.jpg" alt="Ramo Pink" loading="lazy"></div>
-        <h3 class="product-title">Ramo Pink</h3>
-        <p class="product-desc">Minimalismo elegante: 50 rosas frescas en tonos rosados.</p>
-        <div class="product-meta"><div class='price'>$750</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-esmeralda.jpg" alt="Ramo Esmeralda" loading="lazy"></div>
-        <h3 class="product-title">Ramo Esmeralda</h3>
-        <p class="product-desc">Lujoso conjunto de 150 rosas con gipsófilas, corona y listón personalizable.</p>
-        <div class="product-meta"><div class='price'>$2,000</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-daniela.jpg" alt="Ramo Daniela" loading="lazy"></div>
-        <h3 class="product-title">Ramo Daniela</h3>
-        <p class="product-desc">150 rosas con gipsófilas, claveles, mariposas y listón con mensaje.</p>
-        <div class="product-meta"><div class='price'>$2,050</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-alejandra.jpg" alt="Ramo Alejandra" loading="lazy"></div>
-        <h3 class="product-title">Ramo Alejandra</h3>
-        <p class="product-desc">Doce rosas premium con follaje de acompañamiento.</p>
-        <div class="product-meta"><div class='price'>$400</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="cajas">
-        <div class="product-image"><img src="regalo-sorpresa.jpg" alt="Regalo Sorpresa" loading="lazy"></div>
-        <h3 class="product-title">Regalo Sorpresa</h3>
-        <p class="product-desc">Caja floral con compartimento secreto para joyas o electrónicos.</p>
-        <div class="product-meta"><div class='price'>$750</div><span class="product-cat">Cajas</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-abril.jpg" alt="Ramo Abril" loading="lazy"></div>
-        <h3 class="product-title">Ramo Abril</h3>
-        <p class="product-desc">Cincuenta rosas frescas coronadas con mariposa artesanal.</p>
-        <div class="product-meta"><div class='price'>$750</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-consuelo.jpg" alt="Ramo Consuelo" loading="lazy"></div>
-        <h3 class="product-title">Ramo Consuelo</h3>
-        <p class="product-desc">Combinación floral y gourmet: 50 rosas con 10 chocolates selectos.</p>
-        <div class="product-meta"><div class='price'>$850</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="cajas">
-        <div class="product-image"><img src="regalo-victoria.jpg" alt="Regalo Victoria" loading="lazy"></div>
-        <h3 class="product-title">Regalo Victoria</h3>
-        <p class="product-desc">Rosas frescas acompañadas de 16 Ferrero Rocher.</p>
-        <div class="product-meta"><div class='price'>$850</div><span class="product-cat">Cajas</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="cajas">
-        <div class="product-image"><img src="caja-belen.jpg" alt="Caja Belén" loading="lazy"></div>
-        <h3 class="product-title">Caja Belén</h3>
-        <p class="product-desc">Experiencia premium: 50 rosas bicolor + chocolates Ferrero y Kinder Delice.</p>
-        <div class="product-meta"><div class='price'>$1,900</div><span class="product-cat">Cajas</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-andrea.jpg" alt="Ramo Andrea" loading="lazy"></div>
-        <h3 class="product-title">Ramo Andrea</h3>
-        <p class="product-desc">Contraste vibrante entre 24 rosas y 12 gerberas frescas.</p>
-        <div class="product-meta"><div class='price'>$800</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-fanny.jpg" alt="Ramo Fanny" loading="lazy"></div>
-        <h3 class="product-title">Ramo Fanny</h3>
-        <p class="product-desc">Composición rústica con 12 gerberas, siemprevivas y eucalipto.</p>
-        <div class="product-meta"><div class='price'>$880</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-estela.jpg" alt="Ramo Estela" loading="lazy"></div>
-        <h3 class="product-title">Ramo Estela</h3>
-        <p class="product-desc">Treinta gerberas radiantes con siemprevivas y eucalipto.</p>
-        <div class="product-meta"><div class='price'>$1,200</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-mari.jpg" alt="Ramo Mari" loading="lazy"></div>
-        <h3 class="product-title">Ramo Mari</h3>
-        <p class="product-desc">Cinco gerberas destacadas con nube de gipsófilas.</p>
-        <div class="product-meta"><div class='price'>$350</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-julia.jpg" alt="Ramo Julia" loading="lazy"></div>
-        <h3 class="product-title">Ramo Julia</h3>
-        <p class="product-desc">Seis gerberas vibrantes enmarcadas con follaje estilizado.</p>
-        <div class="product-meta"><div class='price'>$380</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="cajas">
-        <div class="product-image"><img src="caja-lau.jpg" alt="Caja Lau" loading="lazy"></div>
-        <h3 class="product-title">Caja Lau</h3>
-        <p class="product-desc">Presentación contemporánea: gerberas frescas en caja de diseño.</p>
-        <div class="product-meta"><div class='price'>$700</div><span class="product-cat">Cajas</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-carla.jpg" alt="Ramo Carla" loading="lazy"></div>
-        <h3 class="product-title">Ramo Carla</h3>
-        <p class="product-desc">Mezcla premium: 12 gerberas, 24 rosas, gipsófilas, astromelias y decoración dorada.</p>
-        <div class="product-meta"><div class='price'>$1,400</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="arreglos">
-        <div class="product-image"><img src="arreglo-aurea.jpg" alt="Arreglo Aurea" loading="lazy"></div>
-        <h3 class="product-title">Arreglo Aurea</h3>
-        <p class="product-desc">Composición en jarrón con 15 rosas, lisianthus, mini rosas y follaje.</p>
-        <div class="product-meta"><div class='price'>$1,250</div><span class="product-cat">Arreglos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-rafa.jpg" alt="Ramo Rafa" loading="lazy"></div>
-        <h3 class="product-title">Ramo Rafa</h3>
-        <p class="product-desc">Fusión tropical: acapulcos, rosas, astromelias y follaje en jarrón.</p>
-        <div class="product-meta"><div class='price'>$900</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-lis.jpg" alt="Ramo Lis" loading="lazy"></div>
-        <h3 class="product-title">Ramo Lis</h3>
-        <p class="product-desc">Equilibrio moderno entre rosas clásicas y acapulcos vibrantes con follaje.</p>
-        <div class="product-meta"><div class='price'>$690</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-lexi.jpg" alt="Ramo Lexi" loading="lazy"></div>
-        <h3 class="product-title">Ramo Lexi</h3>
-        <p class="product-desc">Selección curada de flores estacionales en armonía cromática.</p>
-        <div class="product-meta"><div class='price'>$490</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="plantas">
-        <div class="product-image"><img src="orquidea-maceta.jpg" alt="Orquídea Maceta" loading="lazy"></div>
-        <h3 class="product-title">Orquídea Maceta</h3>
-        <p class="product-desc">Orquídea viva en maceta elegante. Elegancia duradera y bajo mantenimiento.</p>
-        <div class="product-meta"><div class='price'>$850</div><span class="product-cat">Plantas</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-eva.jpg" alt="Ramo Eva" loading="lazy"></div>
-        <h3 class="product-title">Ramo Eva</h3>
-        <p class="product-desc">24 rosas clásicas, 3 girasoles alegres y margaritas campestres.</p>
-        <div class="product-meta"><div class='price'>$750</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-elena.jpg" alt="Ramo Elena" loading="lazy"></div>
-        <h3 class="product-title">Ramo Elena</h3>
-        <p class="product-desc">Cuarenta rosas premium acompañadas de 10 girasoles radiantes.</p>
-        <div class="product-meta"><div class='price'>$1,300</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-esther.jpg" alt="Ramo Esther" loading="lazy"></div>
-        <h3 class="product-title">Ramo Esther</h3>
-        <p class="product-desc">Seis girasoles vibrantes, 15 rosas clásicas y follaje estilizado.</p>
-        <div class="product-meta"><div class='price'>$950</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-lizi.jpg" alt="Ramo Lizi" loading="lazy"></div>
-        <h3 class="product-title">Ramo Lizi</h3>
-        <p class="product-desc">Ocho girasoles frescos enmarcados con follaje natural.</p>
-        <div class="product-meta"><div class='price'>$500</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-karen.jpg" alt="Ramo Karen" loading="lazy"></div>
-        <h3 class="product-title">Ramo Karen</h3>
-        <p class="product-desc">Veinte rosas blancas, lisianthus delicados y dos hortensias voluminosas.</p>
-        <div class="product-meta"><div class='price'>$695</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-barbie.jpg" alt="Ramo Barbie" loading="lazy"></div>
-        <h3 class="product-title">Ramo Barbie</h3>
-        <p class="product-desc">Catorce rosas en tonos rosa con detalles temáticos especiales.</p>
-        <div class="product-meta"><div class='price'>$350</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="ramos">
-        <div class="product-image"><img src="ramo-ramo-spider-man.jpg" alt="Ramo Spider-Man" loading="lazy"></div>
-        <h3 class="product-title">Ramo Spider-Man</h3>
-        <p class="product-desc">Catorce rosas combinadas con elementos temáticos de Spider-Man.</p>
-        <div class="product-meta"><div class='price'>$350</div><span class="product-cat">Ramos</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="especiales">
-        <div class="product-image"><img src="ramo-ramo-cielo.jpg" alt="Ramo Cielo" loading="lazy"></div>
-        <h3 class="product-title">Ramo Cielo</h3>
-        <p class="product-desc">Espectacular arreglo nupcial: 100 rosas, 10 gerberas, mini dólares y corona floral.</p>
-        <div class="product-meta"><div class='price'>$2,250</div><span class="product-cat">Especiales</span></div>
-      </article>
-    
-
-      <article class="product-card" data-category="cajas">
-        <div class="product-image"><img src="arreglo-mily.jpg" alt="Arreglo Mily" loading="lazy"></div>
-        <h3 class="product-title">Arreglo Mily</h3>
-        <p class="product-desc">Composición abundante: 30 rosas, 4 girasoles y astromelias con follaje.</p>
-        <div class="product-meta"><div class='price'>Precio pendiente</div><span class="product-cat">Cajas</span></div>
-      </article>
-    
-    </div>
-  </div>
-</section>
-<!-- Fin sección catálogo completo -->
-<style>
-/* Estilos mínimos para la nueva sección - no afectan layout global */
-#catalogo-completo { padding: 60px 0; background: transparent; color: #222; }
-#catalogo-completo .container { max-width: 1150px; margin: 0 auto; }
-.catalog-grid-inner { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px; }
-.product-card { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); text-align: left; }
-.product-image img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; display: block; margin-bottom: 10px; }
-.product-title { font-size: 18px; margin: 6px 0; color: #222; }
-.product-desc { font-size: 14px; color: #555; min-height: 42px; }
-.product-meta { display:flex; justify-content:space-between; align-items:center; margin-top:12px; }
-.product-meta .price { font-weight:700; color: #c44d83; }
-.product-meta .product-cat { font-size:12px; color:#888; }
-@media (max-width:720px){ .product-image img{height:140px} }
-</style>
-<footer>
+    <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
@@ -2660,23 +2477,34 @@ if (typeof updateCart === 'function') {
   }
 
   /* Toggle botón con animación entre --accent y --whatsapp */
-  .bot-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
-  .bot-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--bubble-gum);
-    color:#fff;
-    border:none;
-    box-shadow:0 10px 30px rgba(0,0,0,0.18);
-    cursor:pointer;
-    font-size:22px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition: transform .18s ease, box-shadow .18s ease;
-    animation: colorShift 3s infinite alternate ease-in-out;
-  }
+  .bot-wrap { position: fixed; right: 18px; bottom: 110px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
+  
+/* --- REEMPLAZAR: estilos previos de .bot-toggle --- */
+
+/* Botón del Chatbot — igual estilo que el carrito */
+.bot-toggle {
+  width: 70px;               /* igual tamaño que .floating-cart */
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bubble-gum); /* mismo rosa que carrito */
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  /* conservar posicionamiento por .bot-wrap (ajustado por JS) */
+}
+
+/* Hover — sutil intensificado como el carrito */
+.bot-toggle:hover {
+  transform: scale(1.08);
+  background-color: #e27aa5; /* rosa ligeramente más intenso al hover */
+}
+
   .bot-toggle:active { transform: scale(.96) }
   @keyframes colorShift {
     0% { background: var(--accent); box-shadow: 0 10px 30px rgba(168,50,121,0.2); }
@@ -2702,7 +2530,10 @@ if (typeof updateCart === 'function') {
 
 <div class="bot-wrap" id="botWrap" aria-live="polite">
   <div style="display:flex; gap:10px; align-items:flex-end;">
-    <button class="bot-toggle" id="botToggle" title="Abrir chat">💬</button>
+    <!-- Reemplazar el contenido del botón del bot por este (ícono FontAwesome) -->
+<button class="bot-toggle" id="botToggle" title="Abrir chat" aria-label="Abrir chat">
+  <i class="fas fa-comment-dots" aria-hidden="true"></i>
+</button>
   </div>
 
   <div id="botPanel" style="display:none; margin-top:10px;">
@@ -2860,6 +2691,17 @@ function transferPay(prodEncoded) {
 /* Enter para enviar */
 botInput.addEventListener('keypress', function(e){
   if (e.key === 'Enter') botSend();
+});
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const botToggle = document.getElementById('botToggle');
+  if (botToggle && botToggle.innerText.trim() === '💬') {
+    botToggle.innerHTML = '<i class="fas fa-comment-dots" aria-hidden="true"></i>';
+  }
 });
 </script>
 
