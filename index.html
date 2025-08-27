@@ -270,7 +270,7 @@
             gap: 20px;
         }
         
-        /* Featured Products */
+        /*Productos Destacados*/
         .featured-products {
             background-color: var(--candy-floss); /* Fondo principal */
             position: relative;
@@ -351,7 +351,7 @@
             margin-bottom: 15px;
         }
         
-        /* Catalog Section */
+        /* Seccion del catalogo */
         .catalog {
             background-color: rgba(198, 230, 227, 0.2); /* Color de acento con transparencia */
         }
@@ -467,7 +467,7 @@
             transform: scale(1.1);
         }
         
-        /* Categories */
+        /* Categorias */
         .categories {
             padding: 80px 0;
             background-color: var(--candy-floss); /* Fondo principal */
@@ -583,7 +583,7 @@
             font-size: 0.95rem;
         }
         
-        /* Contact Section */
+        /* Seccion de contacto */
         .contact {
             background: linear-gradient(to bottom, var(--candy-floss), var(--mint)); /* Gradiente Candy Floss a Mint */
             padding: 100px 0;
@@ -686,7 +686,7 @@
             border-bottom: none;
         }
         
-        /* WhatsApp Button */
+        /* WhatsApp Boton */
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
@@ -951,7 +951,7 @@
             padding: 12px;
         }
         
-        /* Toast notification */
+        /* Notificación de brindis */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -1338,7 +1338,7 @@ footer mark, footer .highlight, footer .tag-highlight {
 </style>
 </head>
 <body>
-    <!-- WhatsApp Button -->
+    <!-- WhatsApp Boton -->
     <a href="https://wa.me/522213387157" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1439,7 +1439,7 @@ footer mark, footer .highlight, footer .tag-highlight {
         </div>
     </section>
 
-    <!-- Featured Products -->
+    <!-- Productos destacados -->
     <section class="featured-products" id="destacados">
         <div class="container">
             <div class="section-title">
@@ -1466,8 +1466,8 @@ footer mark, footer .highlight, footer .tag-highlight {
           </div>
           <p>6 Gerberas, follaje</p>
           <div class="featured-price">$380</div>
-          <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Julia"
-             class="btn">Pedir ahora</a>
+          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Julia%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
+   class="btn">Pedir ahora</a>
         </div>
       </div>
 
@@ -1488,8 +1488,8 @@ footer mark, footer .highlight, footer .tag-highlight {
           </div>
           <p>12 Gerberas, siempre viva, eucalipto</p>
           <div class="featured-price">$880</div>
-          <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Fanny"
-             class="btn">Pedir ahora</a>
+          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Fanny%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
+   class="btn">Pedir ahora</a>    
         </div>
       </div>
 
@@ -1510,8 +1510,8 @@ footer mark, footer .highlight, footer .tag-highlight {
           </div>
           <p>50 Rosas en un tono, Gipsófilia y una Corona</p>
           <div class="featured-price">$2,500</div>
-          <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Wendy"
-             class="btn">Pedir ahora</a>
+          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Wendy%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
+   class="btn">Pedir ahora</a>
         </div>
       </div>
 
@@ -1532,8 +1532,8 @@ footer mark, footer .highlight, footer .tag-highlight {
           </div>
           <p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
           <div class="featured-price">$900</div>
-          <a href="https://wa.me/522213387157?text=Estoy%20interesado%20en%20el%20Ramo%20Nadia"
-             class="btn">Pedir ahora</a>
+          <a href="https://wa.me/522213387157?text=%C2%A1Me%20interesa%20el%20Ramo%20Nadia!%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n%2C%20por%20favor%3F%20%F0%9F%8C%B8%20%C2%A1Gracias!%20%F0%9F%92%90" 
+         class="btn">Pedir ahora</a>
         </div>
       </div>
     </div>
@@ -2602,11 +2602,11 @@ Spider-Man</p>
     </script>
 
 
-<!-- Added: Cart to WhatsApp and bot positioning helpers -->
+<!-- Añadido: Ayudantes de posicionamiento de carrito a WhatsApp y bots -->
 <script>
-/* Generate WhatsApp message from cart */
+/*Generar mensaje de WhatsApp desde el carrito*/
 
-/* Generate WhatsApp message from cart - single-line friendly (no visible %0A) */
+/* Generar mensaje de WhatsApp desde el carrito: compatible con una sola línea (sin %0A visible) */
 function generateWhatsAppCart() {
   try {
     if (typeof cart === 'undefined' || !Array.isArray(cart) || cart.length === 0) {
@@ -2633,7 +2633,7 @@ function generateWhatsAppCart() {
 }
 
 
-/* Update Buy button href if exists */
+/* Actualizar el href del botón Comprar si existe */
 function updateBuyButtonHref() {
   const btn = document.getElementById('buyWhatsappBtn');
   if (!btn) return;
@@ -2645,9 +2645,9 @@ function updateBuyButtonHref() {
   }
 }
 
-/* Ensure bot toggle does not overlap with floating UI buttons */
+/* Asegúrese de que el interruptor del bot no se superponga con los botones flotantes de la interfaz de usuario */
 
-/* Improved adjustBotPosition: finds fixed elements and moves bot above them or left if needed */
+/* AdjustBotPosition mejorado: encuentra elementos fijos y mueve el bot sobre ellos o hacia la izquierda si es necesario */
 function adjustBotPosition() {
   const botWrap = document.getElementById('botWrap');
   if (!botWrap) return;
@@ -2688,14 +2688,14 @@ function adjustBotPosition() {
 }
 
 
-/* Call adjust on load and resize, and update buy href whenever cart updates */
+/* Llamar a ajustar al cargar y cambiar de tamaño, y actualizar el href de compra siempre que se actualice el carrito */
 document.addEventListener('DOMContentLoaded', function() {
   updateBuyButtonHref();
   adjustBotPosition();
 });
 window.addEventListener('resize', adjustBotPosition);
 
-// If updateCart function exists, wrap it to also update buy button after runs
+// Si existe la función updateCart, envuélvala para que también actualice el botón de compra después de ejecutarse
 if (typeof updateCart === 'function') {
   const origUpdateCart = updateCart;
   updateCart = function() {
@@ -2704,7 +2704,7 @@ if (typeof updateCart === 'function') {
   }
 }
 </script>
-<!-- End Added -->
+<!-- Fin añadido -->
 <!-- BOT FAQ INTEGRADO (COLOR DEL CARRITO + ANIMACIÓN ROSA<->VERDE) -->
 <style>
   :root{
@@ -2788,7 +2788,7 @@ if (typeof updateCart === 'function') {
 
       <div class="bot-body" id="botBody">
         <div class="bot-msg msg-bot">
-          Hola 👋, soy el asistente de Castirales. Puedes probar:
+          ¡Hola 👋! Bienvenid@ a Floristería Castirales 🌸. Soy tu asistente virtual, puedes probar con:
           <button class="quick-btn" onclick="botQuick('horario')">horario</button>
           <button class="quick-btn" onclick="botQuick('envios')">envíos</button>
           <button class="quick-btn" onclick="botQuick('pagos')">formas de pago</button>
@@ -2806,7 +2806,7 @@ if (typeof updateCart === 'function') {
 </div>
 
 <script>
-/* ===== CONFIG POR DEFECTO (ya con tu número) ===== */
+/* ===== CONFIG POR DEFECTO (ya con el número) ===== */
 const waNumber = '522213387157'; // México: 52 + lada + número (sin espacios)
 const businessName = 'Floristería Castirales';
 /* =============================================== */
