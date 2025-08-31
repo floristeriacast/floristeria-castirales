@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Castirales Floristería | Flores Exclusivas y Arreglos Elegantes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Castirales Floristería | Flores Exclusivas y Arreglos Elegantes</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
         html {
             scroll-behavior: smooth;
         }
@@ -1335,1019 +1336,887 @@ footer mark, footer .highlight, footer .tag-highlight {
     box-shadow: none !important;
 }
 
+
+/* Mobile optimisation and dev badge */
+@media (max-width: 600px) {
+  .container { width: 94% !important; padding: 0 12px !important; }
+  .btn { padding: 14px 20px; font-size: 1rem; }
+  nav ul { display: none; }
+  .nav-open nav ul { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  header { padding: 12px 0; }
+  .hero { padding: 60px 0; min-height: 360px; }
+  .product-info p { min-height: 40px; }
+}
+.dev-sign { font-size: 0.8rem; color: #666; text-align: center; margin-top: 12px; opacity: 0.9; }
+.dev-sign a { color: inherit; text-decoration: none; font-weight: 600; }
+.dev-badge { position: fixed; bottom: 12px; left: 12px; background: rgba(255,255,255,0.9); color:#222; padding:6px 10px; border-radius:10px; font-size:0.78rem; box-shadow: 0 6px 18px rgba(0,0,0,0.08); z-index:99999; }
+.nav-toggle { display:none; background:transparent; border:none; font-size:1.2rem; cursor:pointer; padding:8px; }
+@media (max-width: 768px) { .nav-toggle { display:block; } }
 </style>
-</head>
+<meta content="Castirales Floristería — Arreglos y ramos exclusivos: rosas, gerberas, cajas regalo, girasoles y arreglos especiales. Pedidos por WhatsApp con envío rápido." name="description"/><meta content="flores, ramos, rosas, gerberas, cajas regalo, girasoles, flores a domicilio, arreglos florales, Castirales, pedidos WhatsApp" name="keywords"/><meta content="Castirales Floristería | Flores Exclusivas y Arreglos Elegantes" property="og:title"/><meta content="Castirales Floristería — Arreglos y ramos exclusivos: rosas, gerberas, cajas regalo, girasoles y arreglos especiales. Pedidos por WhatsApp con envío rápido." property="og:description"/><meta content="website" property="og:type"/><meta content="https://toebosolutions.github.io" property="og:url"/><meta content="Castirales Floristería" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="Castirales Floristería | Flores Exclusivas y Arreglos Elegantes" name="twitter:title"/><meta content="Castirales Floristería — Arreglos y ramos exclusivos: rosas, gerberas, cajas regalo, girasoles y arreglos especiales. Pedidos por WhatsApp con envío rápido." name="twitter:description"/><link href="https://toebosolutions.github.io" rel="canonical"/><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Castirales Floristería",
+  "url": "https://toebosolutions.github.io",
+  "logo": "https://toebosolutions.github.io/images/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/yourpage",
+    "https://www.instagram.com/yourprofile"
+  ]
+}
+</script><meta content="index, follow" name="robots"/><link href="/sitemap.xml" rel="sitemap"/></head>
 <body>
-    <!-- WhatsApp Boton -->
-    <a href="https://wa.me/522213387157" class="whatsapp-button">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- Carrito flotante -->
-    <div class="floating-cart">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge">0</span>
-    </div>
-    
-    <!-- Resumen del carrito -->
-    <div class="cart-summary">
-        <div class="cart-header">
-            <h3>Tu Carrito</h3>
-            <button class="close-cart"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items">
-            <!-- Los productos se añadirán aquí -->
-        </div>
-        <div class="cart-total">
-            <span>Total:</span>
-            <span class="cart-total-amount">$0</span>
-        </div>
-        <div class="cart-actions">
-            <a href="#" class="btn btn-secondary">Ver Carrito</a>
-            <a id="buyWhatsappBtn" href="https://wa.me/522213387157" class="btn">Comprar</a>
-        </div>
-    </div>
-    
-    <!-- Modal de vista rápida -->
-    <div class="modal" id="quickViewModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img src="" alt="Imagen del producto" id="modalImage">
-                </div>
-                <div class="modal-info">
-                    <h2 id="modalTitle"></h2>
-                    <div class="featured-rating" id="modalRating"></div>
-                    <div class="modal-price" id="modalPrice"></div>
-                    <p class="modal-description" id="modalDescription"></p>
-                    <div class="modal-actions">
-                        <button class="btn add-to-cart-modal">Añadir al carrito</button>
-                        <a href="https://wa.me/522213387157" class="btn btn-secondary">Pedir por WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Notificación Toast -->
-    <div class="toast" id="toast">
+<!-- WhatsApp Boton -->
+<a class="whatsapp-button" href="https://wa.me/522213387157">
+<i class="fab fa-whatsapp"></i>
+</a>
+<!-- Carrito flotante -->
+<div class="floating-cart">
+<i class="fas fa-shopping-cart"></i>
+<span class="cart-badge">0</span>
+</div>
+<!-- Resumen del carrito -->
+<div class="cart-summary">
+<div class="cart-header">
+<h3>Tu Carrito</h3>
+<button class="close-cart"><i class="fas fa-times"></i></button>
+</div>
+<div class="cart-items">
+<!-- Los productos se añadirán aquí -->
+</div>
+<div class="cart-total">
+<span>Total:</span>
+<span class="cart-total-amount">$0</span>
+</div>
+<div class="cart-actions">
+<a class="btn btn-secondary" href="#">Ver Carrito</a>
+<a class="btn" href="https://wa.me/522213387157" id="buyWhatsappBtn">Comprar</a>
+</div>
+</div>
+<!-- Modal de vista rápida -->
+<div class="modal" id="quickViewModal">
+<div class="modal-content">
+<span class="close-modal">×</span>
+<div class="modal-body">
+<div class="modal-image">
+<img alt="Imagen del producto" id="modalImage" loading="lazy" src=""/>
+</div>
+<div class="modal-info">
+<h2 id="modalTitle"></h2>
+<div class="featured-rating" id="modalRating"></div>
+<div class="modal-price" id="modalPrice"></div>
+<p class="modal-description" id="modalDescription"></p>
+<div class="modal-actions">
+<button class="btn add-to-cart-modal">Añadir al carrito</button>
+<a class="btn btn-secondary" href="https://wa.me/522213387157">Pedir por WhatsApp</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notificación Toast -->
+<div class="toast" id="toast">
         Producto añadido al carrito
     </div>
-
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="/images/logo.png" alt="Castirales Floristería Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="brand">Castirales</span>
-                    <span class="tagline">Floristería</span>
-                </div>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#destacados">Destacados</a></li>
-                    <li><a href="#catalogo">Catálogo</a></li>
-                    <li><a href="#categorias">Categorías</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <div class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Flores que inspiran emociones</h1>
-                <p>En Castirales Floristería creamos arreglos únicos que transforman momentos ordinarios en experiencias extraordinarias.</p>
-                <div class="hero-buttons">
-                    <a href="#destacados" class="btn">Descubrir colección</a>
-                    <a href="https://wa.me/522213387157" class="btn btn-secondary">Pedir por WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Productos destacados -->
-    <section class="featured-products" id="destacados">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Más Vendidos</h2>
-                <p>Los arreglos florales que nuestros clientes adoran y recomiendan</p>
-            </div>
-            
-            <div class="featured-container">
-                
-      <!-- Product 1: Ramo Julia -->
-      <div class="featured-card" data-id="1" data-category="gerberas">
-        <div class="featured-badge">Más vendido</div>
-        <div class="featured-img">
-          <img src="/images/ramo-julia.jpg" alt="Ramo Julia">
-        </div>
-        <div class="featured-info">
-          <h3>Ramo Julia</h3>
-          <div class="featured-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>6 Gerberas, follaje</p>
-          <div class="featured-price">$380</div>
-          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Julia%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
-   class="btn">Pedir ahora</a>
-        </div>
-      </div>
-
-      <!-- Product 2: Ramo Fanny -->
-      <div class="featured-card" data-id="2" data-category="gerberas">
-        <div class="featured-badge">Novedad</div>
-        <div class="featured-img">
-          <img src="/images/ramo-fanny.jpg" alt="Ramo Fanny">
-        </div>
-        <div class="featured-info">
-          <h3>Ramo Fanny</h3>
-          <div class="featured-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p>12 Gerberas, siempre viva, eucalipto</p>
-          <div class="featured-price">$880</div>
-          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Fanny%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
-   class="btn">Pedir ahora</a>    
-        </div>
-      </div>
-
-      <!-- Product 3: Ramo Wendy -->
-      <div class="featured-card" data-id="3" data-category="especiales">
-        <div class="featured-badge">Popular</div>
-        <div class="featured-img">
-          <img src="/images/ramo-wendy.jpg" alt="Ramo Wendy">
-        </div>
-        <div class="featured-info">
-          <h3>Ramo Wendy</h3>
-          <div class="featured-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>50 Rosas en un tono, Gipsófilia y una Corona</p>
-          <div class="featured-price">$2,500</div>
-          <a href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Wendy%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8" 
-   class="btn">Pedir ahora</a>
-        </div>
-      </div>
-
-      <!-- Product 4: Ramo Nadia -->
-      <div class="featured-card" data-id="4" data-category="rosas">
-        <div class="featured-badge">Popular</div>
-        <div class="featured-img">
-          <img src="/images/ramo-nadia.jpg" alt="Ramo Nadia">
-        </div>
-        <div class="featured-info">
-          <h3>Ramo Nadia</h3>
-          <div class="featured-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
-          <div class="featured-price">$900</div>
-          <a href="https://wa.me/522213387157?text=%C2%A1Me%20interesa%20el%20Ramo%20Nadia!%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n%2C%20por%20favor%3F%20%F0%9F%8C%B8%20%C2%A1Gracias!%20%F0%9F%92%90" 
-         class="btn">Pedir ahora</a>
-        </div>
-      </div>
-    </div>
-    <!-- /.featured-cards -->
-  </div>
-  <!-- /.container -->
+<!-- Header -->
+<header>
+<div class="container header-container"><button aria-label="Abrir menú" class="nav-toggle">☰</button>
+<div class="logo">
+<img alt="Castirales Floristería Logo" class="logo-img" loading="lazy" src="/images/logo.png"/>
+<div class="logo-text">
+<span class="brand">Castirales</span>
+<span class="tagline">Floristería</span>
+</div>
+</div>
+<nav>
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#destacados">Destacados</a></li>
+<li><a href="#catalogo">Catálogo</a></li>
+<li><a href="#categorias">Categorías</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</nav>
+<div class="header-actions">
+<div class="cart-icon">
+<i class="fas fa-shopping-cart"></i>
+<span class="cart-count">0</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero" id="inicio">
+<div class="container">
+<div class="hero-content">
+<h1>Flores que inspiran emociones</h1>
+<p>En Castirales Floristería creamos arreglos únicos que transforman momentos ordinarios en experiencias extraordinarias.</p>
+<div class="hero-buttons">
+<a class="btn" href="#destacados">Descubrir colección</a>
+<a class="btn btn-secondary" href="https://wa.me/522213387157">Pedir por WhatsApp</a>
+</div>
+</div>
+</div>
 </section>
-
-
-
-    <!-- Categories Section -->
-    <section class="categories" id="categorias">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestras Categorías</h2>
-                <p>Descubre nuestra variedad de arreglos florales para cada ocasión</p>
-            </div>
-            
-            <div class="categories-container">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-rose"></i>
-                    </div>
-                    <h3>Ramos de Rosas</h3>
-                    <p>Elegantes arreglos con rosas frescas en diferentes colores y combinaciones.</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <h3>Ramos de Gerberas</h3>
-                    <p>Coloridos arreglos con gerberas frescas, perfectas para alegrar cualquier espacio.</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <h3>Cajas de Flores</h3>
-                    <p>Originales cajas florales con rosas y complementos para regalos especiales.</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h3>Arreglos Especiales</h3>
-                    <p>Composiciones únicas con combinaciones de flores y elementos decorativos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Catalog Section -->
-    <section class="catalog" id="catalogo">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestro Catálogo Completo</h2>
-                <p>Explora nuestra amplia selección de arreglos florales para cada ocasión</p>
-            </div>
-            
-            <div class="catalog-filters">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="rosas">Rosas</button>
-                <button class="filter-btn" data-filter="gerberas">Gerberas</button>
-                <button class="filter-btn" data-filter="cajas">Cajas</button>
-                <button class="filter-btn" data-filter="girasoles">Girasoles</button>
-                <button class="filter-btn" data-filter="especiales">Especiales</button>
-            </div>
-            
-            <div class="catalog-grid">
-                <!-- Ramo Wendy -->
-                <div class="product-card" data-id="4" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-wendy.jpg" alt="Ramo Wendy">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Wendy</h3>
-                        <p>50 Rosas en un tono, Gipsófilia y una Corona</p>
-                        <div class="product-price">
-                            <span class="price">$900</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Graciela -->
-                <div class="product-card" data-id="5" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-graciela-1.jpg" alt="Ramo Graciela">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Graciela</h3>
-                        <p>50 Rosas en dos tonos y Gipsófilia</p>
-                        <div class="product-price">
-                            <span class="price">$850</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Nadia -->
-                <div class="product-card" data-id="6" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-nadia.jpg" alt="Ramo Nadia">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Nadia</h3>
-                        <p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
-                        <div class="product-price">
-                            <span class="price">$900</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Amor eterno -->
-                <div class="product-card" data-id="7" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-amor-eterno.jpg" alt="Ramo Amor eterno">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Amor eterno</h3>
-                        <p>200 Rosas en colores variados y una Corona</p>
-                        <div class="product-price">
-                            <span class="price">$2,500</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Spider-Man -->
-                <div class="product-card" data-id="8" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-spider-man.jpg" alt="Ramo SpiderMan">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo SpiderMan</h3>
-                        <p>14 Rosas y ojos de
+<!-- Productos destacados -->
+<section class="featured-products" id="destacados">
+<div class="container">
+<div class="section-title">
+<h2>Nuestros Más Vendidos</h2>
+<p>Los arreglos florales que nuestros clientes adoran y recomiendan</p>
+</div>
+<div class="featured-container">
+<!-- Product 1: Ramo Julia -->
+<div class="featured-card" data-category="gerberas" data-id="1">
+<div class="featured-badge">Más vendido</div>
+<div class="featured-img">
+<img alt="Ramo Julia" loading="lazy" src="/images/ramo-julia.jpg"/>
+</div>
+<div class="featured-info">
+<h3>Ramo Julia</h3>
+<div class="featured-rating">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+</div>
+<p>6 Gerberas, follaje</p>
+<div class="featured-price">$380</div>
+<a class="btn" href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Julia%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8">Pedir ahora</a>
+</div>
+</div>
+<!-- Product 2: Ramo Fanny -->
+<div class="featured-card" data-category="gerberas" data-id="2">
+<div class="featured-badge">Novedad</div>
+<div class="featured-img">
+<img alt="Ramo Fanny" loading="lazy" src="/images/ramo-fanny.jpg"/>
+</div>
+<div class="featured-info">
+<h3>Ramo Fanny</h3>
+<div class="featured-rating">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star-half-alt"></i>
+</div>
+<p>12 Gerberas, siempre viva, eucalipto</p>
+<div class="featured-price">$880</div>
+<a class="btn" href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Fanny%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8">Pedir ahora</a>
+</div>
+</div>
+<!-- Product 3: Ramo Wendy -->
+<div class="featured-card" data-category="especiales" data-id="3">
+<div class="featured-badge">Popular</div>
+<div class="featured-img">
+<img alt="Ramo Wendy" loading="lazy" src="/images/ramo-wendy.jpg"/>
+</div>
+<div class="featured-info">
+<h3>Ramo Wendy</h3>
+<div class="featured-rating">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+</div>
+<p>50 Rosas en un tono, Gipsófilia y una Corona</p>
+<div class="featured-price">$2,500</div>
+<a class="btn" href="https://wa.me/522213387157?text=Me%20interesa%20el%20Ramo%20Wendy%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20detalles,%20por%20favor%3F%20%C2%A1Gracias!%20%F0%9F%8C%B8">Pedir ahora</a>
+</div>
+</div>
+<!-- Product 4: Ramo Nadia -->
+<div class="featured-card" data-category="rosas" data-id="4">
+<div class="featured-badge">Popular</div>
+<div class="featured-img">
+<img alt="Ramo Nadia" loading="lazy" src="/images/ramo-nadia.jpg"/>
+</div>
+<div class="featured-info">
+<h3>Ramo Nadia</h3>
+<div class="featured-rating">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star-half-alt"></i>
+</div>
+<p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
+<div class="featured-price">$900</div>
+<a class="btn" href="https://wa.me/522213387157?text=%C2%A1Me%20interesa%20el%20Ramo%20Nadia!%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n%2C%20por%20favor%3F%20%F0%9F%8C%B8%20%C2%A1Gracias!%20%F0%9F%92%90">Pedir ahora</a>
+</div>
+</div>
+</div>
+<!-- /.featured-cards -->
+</div>
+<!-- /.container -->
+</section>
+<!-- Categories Section -->
+<section class="categories" id="categorias">
+<div class="container">
+<div class="section-title">
+<h2>Nuestras Categorías</h2>
+<p>Descubre nuestra variedad de arreglos florales para cada ocasión</p>
+</div>
+<div class="categories-container">
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-rose"></i>
+</div>
+<h3>Ramos de Rosas</h3>
+<p>Elegantes arreglos con rosas frescas en diferentes colores y combinaciones.</p>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-sun"></i>
+</div>
+<h3>Ramos de Gerberas</h3>
+<p>Coloridos arreglos con gerberas frescas, perfectas para alegrar cualquier espacio.</p>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-gift"></i>
+</div>
+<h3>Cajas de Flores</h3>
+<p>Originales cajas florales con rosas y complementos para regalos especiales.</p>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-spa"></i>
+</div>
+<h3>Arreglos Especiales</h3>
+<p>Composiciones únicas con combinaciones de flores y elementos decorativos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Catalog Section -->
+<section class="catalog" id="catalogo">
+<div class="container">
+<div class="section-title">
+<h2>Nuestro Catálogo Completo</h2>
+<p>Explora nuestra amplia selección de arreglos florales para cada ocasión</p>
+</div>
+<div class="catalog-filters">
+<button class="filter-btn active" data-filter="all">Todos</button>
+<button class="filter-btn" data-filter="rosas">Rosas</button>
+<button class="filter-btn" data-filter="gerberas">Gerberas</button>
+<button class="filter-btn" data-filter="cajas">Cajas</button>
+<button class="filter-btn" data-filter="girasoles">Girasoles</button>
+<button class="filter-btn" data-filter="especiales">Especiales</button>
+</div>
+<div class="catalog-grid"><div class="product-card" data-category="rosas" data-id="5">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Graciela" loading="lazy" src="/images/ramo-graciela-1.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Graciela</h3>
+<p>50 Rosas en dos tonos y Gipsófilia</p>
+<div class="product-price">
+<span class="price">$850</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="4">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Wendy" loading="lazy" src="/images/ramo-wendy.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Wendy</h3>
+<p>50 Rosas en un tono, Gipsófilia y una Corona</p>
+<div class="product-price">
+<span class="price">$900</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="6">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Nadia" loading="lazy" src="/images/ramo-nadia.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Nadia</h3>
+<p>50 Rosas en dos tonos, Gipsófilia y Mariposas</p>
+<div class="product-price">
+<span class="price">$900</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="7">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Amor eterno" loading="lazy" src="/images/ramo-amor-eterno.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Amor eterno</h3>
+<p>200 Rosas en colores variados y una Corona</p>
+<div class="product-price">
+<span class="price">$2,500</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="25">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Pink" loading="lazy" src="/images/ramo-pink.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Pink</h3>
+<p>50 rosas frescas en tonos rosados.</p>
+<div class="product-price">
+<span class="price">$750</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="10">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Esmeralda" loading="lazy" src="/images/ramo-esmeralda.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Esmeralda</h3>
+<p>150 rosas, Gipsófilia, Corona y Listón con frase</p>
+<div class="product-price">
+<span class="price">$2,000</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="9">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Daniela" loading="lazy" src="/images/ramo-daniela.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Daniela</h3>
+<p>150 rosas, Gipsófilia, Clavel, Mariposas y Listón con frase</p>
+<div class="product-price">
+<span class="price">$2,050</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="12">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Alejandra" loading="lazy" src="/images/ramo-alejandra.png"/>
+</div>
+<div class="product-info">
+<h3>Ramo Alejandra</h3>
+<p>12 Rosas con follaje</p>
+<div class="product-price">
+<span class="price">$400</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="14">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Abril" loading="lazy" src="/images/ramo-abril.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Abril</h3>
+<p>Ramo de 50 Rosas con una Mariposa</p>
+<div class="product-price">
+<span class="price">$750</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="13">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Consuelo" loading="lazy" src="/images/ramo-consuelo.png"/>
+</div>
+<div class="product-info">
+<h3>Ramo Consuelo</h3>
+<p>50 rosas y 10 chocolates</p>
+<div class="product-price">
+<span class="price">$850</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="cajas" data-id="16">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Regalo Victoria" loading="lazy" src="/images/regalo-victoria.jpg"/>
+</div>
+<div class="product-info">
+<h3>Regalo Victoria</h3>
+<p>Rosas y 16 Chocolates Ferrero</p>
+<div class="product-price">
+<span class="price">$850</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="26">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Andrea" loading="lazy" src="/images/ramo-andrea.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Andrea</h3>
+<p>Contraste vibrante entre 24 rosas clásicas y 12 gerberas frescas de colores intensos.</p>
+<div class="product-price">
+<span class="price">$800</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="23">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Carla" loading="lazy" src="/images/ramo-carla.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Carla</h3>
+<p>12 Gerberas, 24 rosas, gipsófilia, Astromelia, Dolar</p>
+<div class="product-price">
+<span class="price">$1,400</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="30">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Eva" loading="lazy" src="/images/ramo-eva.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Eva</h3>
+<p>Combinación de 24 rosas clásicas, 3 girasoles vibrantes y margaritas.</p>
+<div class="product-price">
+<span class="price">$750</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="31">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Elena" loading="lazy" src="/images/ramo-elena.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Elena</h3>
+<p>Cuarenta rosas acompañadas de diez girasoles.</p>
+<div class="product-price">
+<span class="price">$1,300</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="32">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Esther" loading="lazy" src="/images/regalo-estela.png"/>
+</div>
+<div class="product-info">
+<h3>Ramo Esther</h3>
+<p>Seis girasoles, 15 rosas clásicas y follaje.</p>
+<div class="product-price">
+<span class="price">$950</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="34">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Karen" loading="lazy" src="/images/ramo-karen.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Karen</h3>
+<p>Veinte rosas blancas con lisianthus y dos hortensias.</p>
+<div class="product-price">
+<span class="price">$695</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="35">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Barbie" loading="lazy" src="/images/ramo-barbie.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Barbie</h3>
+<p>Catorce rosas en tonos rosa más imágenes de Barbie.</p>
+<div class="product-price">
+<span class="price">$350</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="rosas" data-id="8">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo SpiderMan" loading="lazy" src="/images/ramo-spider-man.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo SpiderMan</h3>
+<p>14 Rosas y ojos de
 Spider-Man</p>
-                        <div class="product-price">
-                            <span class="price">$350</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Daniela -->
-                <div class="product-card" data-id="9" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-daniela.jpg" alt="Ramo Daniela">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Daniela</h3>
-                        <p>150 rosas, Gipsófilia, Clavel, Mariposas y Listón con frase</p>
-                        <div class="product-price">
-                            <span class="price">$2,050</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Esmeralda -->
-                <div class="product-card" data-id="10" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-esmeralda.jpg" alt="Ramo Esmeralda">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Esmeralda</h3>
-                        <p>150 rosas, Gipsófilia, Corona y Listón con frase</p>
-                        <div class="product-price">
-                            <span class="price">$2,000</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Regalo Sorpresa -->
-                <div class="product-card" data-id="11" data-category="cajas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/regalo-sorpresa.jpg" alt="Regalo Sorpresa">
-                    </div>
-                    <div class="product-info">
-                        <h3>Regalo Sorpresa</h3>
-                        <p>Caja de Rosas, diseñada para contener un regalo sorpresa en el centro</p>
-                        <div class="product-price">
-                            <span class="price">$750</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Alejandra -->
-                <div class="product-card" data-id="12" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-alejandra.png" alt="Ramo Alejandra">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Alejandra</h3>
-                        <p>12 Rosas con follaje</p>
-                        <div class="product-price">
-                            <span class="price">$400</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Consuelo -->
-                <div class="product-card" data-id="13" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-consuelo.png" alt="Ramo Consuelo">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Consuelo</h3>
-                        <p>50 rosas y 10 chocolates</p>
-                        <div class="product-price">
-                            <span class="price">$850</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Abril -->
-                <div class="product-card" data-id="14" data-category="rosas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-abril.jpg" alt="Ramo Abril">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Abril</h3>
-                        <p>Ramo de 50 Rosas con una Mariposa</p>
-                        <div class="product-price">
-                            <span class="price">$750</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Caja Belén -->
-                <div class="product-card" data-id="15" data-category="cajas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/caja-belen.jpg" alt="Caja Belén">
-                    </div>
-                    <div class="product-info">
-                        <h3>Caja Belén</h3>
-                        <p>50 rosas en dos tonos, 10 Chocolates Ferrero, 10 Kinder Delice</p>
-                        <div class="product-price">
-                            <span class="price">$1,900</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Regalo Victoria -->
-                <div class="product-card" data-id="16" data-category="cajas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/regalo-victoria.jpg" alt="Regalo Victoria">
-                    </div>
-                    <div class="product-info">
-                        <h3>Regalo Victoria</h3>
-                        <p>Rosas y 16 Chocolates Ferrero</p>
-                        <div class="product-price">
-                            <span class="price">$850</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Andrea -->
-                <div class="product-card" data-id="17" data-category="gerberas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-andrea.jpg" alt="Ramo Andrea">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Andrea</h3>
-                        <p>24 Rosas y 12 Gerberas</p>
-                        <div class="product-price">
-                            <span class="price">$800</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Estela -->
-                <div class="product-card" data-id="18" data-category="gerberas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-estela.jpg" alt="Ramo Estela">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Estela</h3>
-                        <p>30 Gerberas, siempre viva, eucalipto</p>
-                        <div class="product-price">
-                            <span class="price">$1,200</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Fanny -->
-                <div class="product-card" data-id="19" data-category="gerberas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-fanny.jpg" alt="Ramo Fanny">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Fanny</h3>
-                        <p>12 Gerberas, siempre viva, eucalipto</p>
-                        <div class="product-price">
-                            <span class="price">$880</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Julia -->
-                <div class="product-card" data-id="20" data-category="gerberas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-julia.jpg" alt="Ramo Julia">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Julia</h3>
-                        <p>6 Gerberas, follaje</p>
-                        <div class="product-price">
-                            <span class="price">$380</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Mari -->
-                <div class="product-card" data-id="21" data-category="gerberas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-mari.jpg" alt="Ramo Mari">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Mari</h3>
-                        <p>5 Gerberas, Gipsófilia</p>
-                        <div class="product-price">
-                            <span class="price">$350</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Caja Lau -->
-                <div class="product-card" data-id="22" data-category="cajas">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/caja-lau.jpg" alt="Caja Lau">
-                    </div>
-                    <div class="product-info">
-                        <h3>Caja Lau</h3>
-                        <p>Caja de Gerberas</p>
-                        <div class="product-price">
-                            <span class="price">$700</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Carla -->
-                <div class="product-card" data-id="23" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-carla.jpg" alt="Ramo Carla">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Carla</h3>
-                        <p>12 Gerberas, 24 rosas, gipsófilia, Astromelia, Dolar</p>
-                        <div class="product-price">
-                            <span class="price">$1,400</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ramo Rafa -->
-                <div class="product-card" data-id="24" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-rafa.jpg" alt="Ramo Rafa">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Rafa</h3>
-                        <p>Acapulco, Rosas, Astromelias, Follajes y Jarrón</p>
-                        <div class="product-price">
-                            <span class="price">$900</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Pink -->
-                <div class="product-card" data-id="25" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-pink.jpg" alt="Ramo Pink">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Pink</h3>
-                        <p>50 rosas frescas en tonos rosados.</p>
-                        <div class="product-price">
-                            <span class="price">$750</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Andrea -->
-                <div class="product-card" data-id="26" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-andrea.jpg" alt="Ramo Andrea">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Andrea</h3>
-                        <p>Contraste vibrante entre 24 rosas clásicas y 12 gerberas frescas de colores intensos.</p>
-                        <div class="product-price">
-                            <span class="price">$800</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Lis -->
-                <div class="product-card" data-id="27" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-lis.jpg" alt="Ramo Lis">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Lis</h3>
-                        <p>Equilibrio moderno entre rosas clásicas y acapulcos vibrantes con follaje.</p>
-                        <div class="product-price">
-                            <span class="price">$690</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Lexi -->
-                <div class="product-card" data-id="28" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-lexi.jpg" alt="Ramo Lexi">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Lexi</h3>
-                        <p>Flores Variadas.</p>
-                        <div class="product-price">
-                            <span class="price">$490</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Orquídea Maceta -->
-                <div class="product-card" data-id="29" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/orquídea.jpg" alt="Orquídea">
-                    </div>
-                    <div class="product-info">
-                        <h3>Orquídea Maceta</h3>
-                        <p>Orquídea viva en maceta, propuesta de larga duración y bajo mantenimiento.</p>
-                        <div class="product-price">
-                            <span class="price">$850</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Eva -->
-                <div class="product-card" data-id="30" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-eva.jpg" alt="Ramo Eva">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Eva</h3>
-                        <p>Combinación de 24 rosas clásicas, 3 girasoles vibrantes y margaritas.</p>
-                        <div class="product-price">
-                            <span class="price">$750</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Elena -->
-                <div class="product-card" data-id="31" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-elena.jpg" alt="Ramo Elena">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Elena</h3>
-                        <p>Cuarenta rosas acompañadas de diez girasoles.</p>
-                        <div class="product-price">
-                            <span class="price">$1,300</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Ramo Esther(antes "regalo estela") -->
-                <div class="product-card" data-id="32" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/regalo-estela.png" alt="Ramo Esther">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Esther</h3>
-                        <p>Seis girasoles, 15 rosas clásicas y follaje.</p>
-                        <div class="product-price">
-                            <span class="price">$950</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ramo Lizi(antes Romi) -->
-                <div class="product-card" data-id="33" data-category="girasoles">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-romi.jpg" alt="Ramo Lizi">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Lizi</h3>
-                        <p>Ocho Girasoles y Follaje.</p>
-                        <div class="product-price">
-                            <span class="price">$500</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!-- Ramo Karen -->
-                <div class="product-card" data-id="34" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-karen.jpg" alt="Ramo Karen">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Karen</h3>
-                        <p>Veinte rosas blancas con lisianthus y dos hortensias.</p>
-                        <div class="product-price">
-                            <span class="price">$695</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!-- Ramo Barbie -->
-                <div class="product-card" data-id="35" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-barbie.jpg" alt="Ramo Barbie">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Barbie</h3>
-                        <p>Catorce rosas en tonos rosa más imágenes de Barbie.</p>
-                        <div class="product-price">
-                            <span class="price">$350</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!-- Ramo Cielo -->
-                <div class="product-card" data-id="36" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/ramo-cielo.jpg" alt="Ramo Cielo">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ramo Cielo</h3>
-                        <p>100 rosas, 10 gerberas, mini dólar y corona floral.</p>
-                        <div class="product-price">
-                            <span class="price">$2,250</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Arreglo Aurea -->
-                <div class="product-card" data-id="37" data-category="especiales">
-                    <button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
-                    <div class="product-img">
-                        <img src="/images/arreglo-aurea.jpg" alt="Arreglo Aurea">
-                    </div>
-                    <div class="product-info">
-                        <h3>Arreglo Aurea</h3>
-                        <p>15 Rosas, Lisianthus, Mini Rosa, Follaje, Jarrón</p>
-                        <div class="product-price">
-                            <span class="price">$1,250</span>
-                            <div class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <!-- Contact Section -->
-    
+<div class="product-price">
+<span class="price">$350</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="gerberas" data-id="19">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Fanny" loading="lazy" src="/images/ramo-fanny.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Fanny</h3>
+<p>12 Gerberas, siempre viva, eucalipto</p>
+<div class="product-price">
+<span class="price">$880</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="gerberas" data-id="18">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Estela" loading="lazy" src="/images/ramo-estela.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Estela</h3>
+<p>30 Gerberas, siempre viva, eucalipto</p>
+<div class="product-price">
+<span class="price">$1,200</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="gerberas" data-id="21">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Mari" loading="lazy" src="/images/ramo-mari.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Mari</h3>
+<p>5 Gerberas, Gipsófilia</p>
+<div class="product-price">
+<span class="price">$350</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="gerberas" data-id="20">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Julia" loading="lazy" src="/images/ramo-julia.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Julia</h3>
+<p>6 Gerberas, follaje</p>
+<div class="product-price">
+<span class="price">$380</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="cajas" data-id="11">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Regalo Sorpresa" loading="lazy" src="/images/regalo-sorpresa.jpg"/>
+</div>
+<div class="product-info">
+<h3>Regalo Sorpresa</h3>
+<p>Caja de Rosas, diseñada para contener un regalo sorpresa en el centro</p>
+<div class="product-price">
+<span class="price">$750</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="cajas" data-id="15">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Caja Belén" loading="lazy" src="/images/caja-belen.jpg"/>
+</div>
+<div class="product-info">
+<h3>Caja Belén</h3>
+<p>50 rosas en dos tonos, 10 Chocolates Ferrero, 10 Kinder Delice</p>
+<div class="product-price">
+<span class="price">$1,900</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="cajas" data-id="22">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Caja Lau" loading="lazy" src="/images/caja-lau.jpg"/>
+</div>
+<div class="product-info">
+<h3>Caja Lau</h3>
+<p>Caja de Gerberas</p>
+<div class="product-price">
+<span class="price">$700</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="girasoles" data-id="33">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Lizi" loading="lazy" src="/images/ramo-romi.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Lizi</h3>
+<p>Ocho Girasoles y Follaje.</p>
+<div class="product-price">
+<span class="price">$500</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="37">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Arreglo Aurea" loading="lazy" src="/images/arreglo-aurea.jpg"/>
+</div>
+<div class="product-info">
+<h3>Arreglo Aurea</h3>
+<p>15 Rosas, Lisianthus, Mini Rosa, Follaje, Jarrón</p>
+<div class="product-price">
+<span class="price">$1,250</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="24">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Rafa" loading="lazy" src="/images/ramo-rafa.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Rafa</h3>
+<p>Acapulco, Rosas, Astromelias, Follajes y Jarrón</p>
+<div class="product-price">
+<span class="price">$900</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="27">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Lis" loading="lazy" src="/images/ramo-lis.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Lis</h3>
+<p>Equilibrio moderno entre rosas clásicas y acapulcos vibrantes con follaje.</p>
+<div class="product-price">
+<span class="price">$690</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="28">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Lexi" loading="lazy" src="/images/ramo-lexi.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Lexi</h3>
+<p>Flores Variadas.</p>
+<div class="product-price">
+<span class="price">$490</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="29">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Orquídea" loading="lazy" src="/images/orquídea.jpg"/>
+</div>
+<div class="product-info">
+<h3>Orquídea Maceta</h3>
+<p>Orquídea viva en maceta, propuesta de larga duración y bajo mantenimiento.</p>
+<div class="product-price">
+<span class="price">$850</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div><div class="product-card" data-category="especiales" data-id="36">
+<button class="quick-view"><i class="fas fa-eye"></i> Vista rápida</button>
+<div class="product-img">
+<img alt="Ramo Cielo" loading="lazy" src="/images/ramo-cielo.jpg"/>
+</div>
+<div class="product-info">
+<h3>Ramo Cielo</h3>
+<p>100 rosas, 10 gerberas, mini dólar y corona floral.</p>
+<div class="product-price">
+<span class="price">$2,250</span>
+<div class="add-to-cart">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<!-- Contact Section -->
 <!-- Price reference note inserted by TOEBO -->
-<section class="price-note" aria-hidden="false" style="padding:30px 0; background:transparent;">
-  <div class="container" style="text-align:center;">
-    <p style="display:inline-block; background:rgba(255,255,255,0.9); padding:12px 18px; border-radius:12px; border:1px solid rgba(0,0,0,0.06); color:var(--dark); font-weight:600;">
+<section aria-hidden="false" class="price-note" style="padding:30px 0; background:transparent;">
+<div class="container" style="text-align:center;">
+<p style="display:inline-block; background:rgba(255,255,255,0.9); padding:12px 18px; border-radius:12px; border:1px solid rgba(0,0,0,0.06); color:var(--dark); font-weight:600;">
       Precios de referencia — consulte para más información.
     </p>
-  </div>
-</section>
-
-<section class="contact" id="contacto">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contacta Con Nosotros</h2>
-                <p>Estamos aquí para ayudarte a encontrar el arreglo floral perfecto</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Información de contacto</h3>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>WhatsApp</h4>
-                            <p>22-13-38-71-57</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p>floristeriacastirales@gmail.com</p>
-                        </div>
-                    </div>
-                    
-             <div class="contact-detail">
-    <div class="contact-icon">
-        <i class="fas fa-truck"></i>
-    </div>
-    <div class="contact-text">
-        <h4>Envíos</h4>
-        <p>Entregas a domicilio en toda la ciudad</p>
-    </div>
 </div>
-                    
-                    <h3 style="margin-top: 40px;">Horario de atención</h3>
-                    <ul class="hours-list">
-                        <li><span>Lunes a Viernes:</span> <span>9:00 - 20:00</span></li>
-                        <li><span>Sábados:</span> <span>9:00 - 20:00</span></li>
-                        <li><span>Domingos:</span> <span>CERRADO</span></li>
-                    </ul>
-                    
-                    <h3 style="margin-top: 40px;">Síguenos</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/floristeria_castirales/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/floristeria.castirales/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.tiktok.com/@floristeria.casti" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
+</section>
+<section class="contact" id="contacto">
+<div class="container">
+<div class="section-title">
+<h2>Contacta Con Nosotros</h2>
+<p>Estamos aquí para ayudarte a encontrar el arreglo floral perfecto</p>
+</div>
+<div class="contact-container">
+<div class="contact-info">
+<h3>Información de contacto</h3>
+<div class="contact-detail">
+<div class="contact-icon">
+<i class="fab fa-whatsapp"></i>
+</div>
+<div class="contact-text">
+<h4>WhatsApp</h4>
+<p>22-13-38-71-57</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-icon">
+<i class="fas fa-envelope"></i>
+</div>
+<div class="contact-text">
+<h4>Email</h4>
+<p>floristeriacastirales@gmail.com</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-icon">
+<i class="fas fa-truck"></i>
+</div>
+<div class="contact-text">
+<h4>Envíos</h4>
+<p>Entregas a domicilio en toda la ciudad</p>
+</div>
+</div>
+<h3 style="margin-top: 40px;">Horario de atención</h3>
+<ul class="hours-list">
+<li><span>Lunes a Viernes:</span> <span>9:00 - 20:00</span></li>
+<li><span>Sábados:</span> <span>9:00 - 20:00</span></li>
+<li><span>Domingos:</span> <span>CERRADO</span></li>
+</ul>
+<h3 style="margin-top: 40px;">Síguenos</h3>
+<div class="social-links">
+<a href="https://www.instagram.com/floristeria_castirales/" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.facebook.com/floristeria.castirales/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.tiktok.com/@floristeria.casti" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-container">
+<div class="footer-col">
+<div class="logo" style="margin-bottom: 20px;">
+<img alt="Castirales Floristería Logo" loading="lazy" src="/images/logo.png" style="width: 60px; height: 60px;"/>
+<div class="logo-text">
+<span class="brand" style="color: #d95b73 !important;">Castirales</span>
+<span class="tagline" style="color: #81BFB7;">Floristería</span>
+</div>
+</div>
+<p>Creando momentos especiales con flores frescas y diseños únicos desde 2023.</p>
+<p><a download="" href="/catalogo.pdf">Descargar Catálogo PDF</a></p>
+</div>
+<div class="footer-col">
+<h3>Enlaces rápidos</h3>
+<ul class="footer-links">
+<li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+<li><a href="#destacados"><i class="fas fa-chevron-right"></i> Destacados</a></li>
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Catálogo</a></li>
+<li><a href="#categorias"><i class="fas fa-chevron-right"></i> Categorías</a></li>
+<li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Productos Populares</h3>
+<ul class="footer-links">
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Graciela</a></li>
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Wendy</a></li>
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Amor Eterno</a></li>
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Caja Belén</a></li>
+<li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Elena</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Boletín informativo</h3>
+<p>Suscríbete para recibir ofertas exclusivas, novedades y consejos para el cuidado de tus flores.</p>
+<div class="newsletter-form">
+<input placeholder="Tu email" required="" type="email"/>
+<button type="submit"><i class="fas fa-paper-plane"></i></button>
+</div>
+</div>
+</div>
+<p aria-hidden="false" class="dev-sign">Desarrollado por <a href="https://toebosolutions.github.io" rel="noopener" target="_blank">TOEBO Solutions</a></p><div class="copyright">
+                © 2025 Castirales Floristería. Todos los derechos reservados.
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">
-                        <img src="/images/logo.png" alt="Castirales Floristería Logo" style="width: 60px; height: 60px;">
-                        <div class="logo-text">
-                            <span class="brand" style="color: #d95b73 !important;">Castirales</span>
-                            <span class="tagline" style="color: #81BFB7;">Floristería</span>
-                        </div>
-                    </div>
-                    <p>Creando momentos especiales con flores frescas y diseños únicos desde 2023.</p>
-                    <p><a href="/catalogo.pdf" download>Descargar Catálogo PDF</a></p>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Enlaces rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
-                        <li><a href="#destacados"><i class="fas fa-chevron-right"></i> Destacados</a></li>
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Catálogo</a></li>
-                        <li><a href="#categorias"><i class="fas fa-chevron-right"></i> Categorías</a></li>
-                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Productos Populares</h3>
-                    <ul class="footer-links">
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Graciela</a></li>
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Wendy</a></li>
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Amor Eterno</a></li>
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Caja Belén</a></li>
-                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Ramo Elena</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Boletín informativo</h3>
-                    <p>Suscríbete para recibir ofertas exclusivas, novedades y consejos para el cuidado de tus flores.</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Tu email" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2025 Castirales Floristería. Todos los derechos reservados.
-            </div>
-        </div>
-    </footer>
-    
-    <script>
+</div>
+</footer>
+<script>
         // Funcionalidad del carrito
         const cartIcon = document.querySelector('.cart-icon');
         const floatingCart = document.querySelector('.floating-cart');
@@ -2600,8 +2469,6 @@ Spider-Man</p>
         // Inicializar cuando el DOM esté cargado
         document.addEventListener('DOMContentLoaded', init);
     </script>
-
-
 <!-- Añadido: Ayudantes de posicionamiento de carrito a WhatsApp y bots -->
 <script>
 /*Generar mensaje de WhatsApp desde el carrito*/
@@ -2767,44 +2634,39 @@ if (typeof updateCart === 'function') {
   .bot-footer button.send { background:var(--accent); color: var(--dark); border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
   @media (max-width:420px){ .bot-panel{ width:92vw; height:70vh } }
 </style>
-
-<div class="bot-wrap" id="botWrap" aria-live="polite">
-  <div style="display:flex; gap:10px; align-items:flex-end;">
-    <!-- Reemplazar el contenido del botón del bot por este (ícono FontAwesome) -->
-<button class="bot-toggle" id="botToggle" title="Abrir chat" aria-label="Abrir chat">
-  <i class="fas fa-comment-dots" aria-hidden="true"></i>
+<div aria-live="polite" class="bot-wrap" id="botWrap">
+<div style="display:flex; gap:10px; align-items:flex-end;">
+<!-- Reemplazar el contenido del botón del bot por este (ícono FontAwesome) -->
+<button aria-label="Abrir chat" class="bot-toggle" id="botToggle" title="Abrir chat">
+<i aria-hidden="true" class="fas fa-comment-dots"></i>
 </button>
-  </div>
-
-  <div id="botPanel" style="display:none; margin-top:10px;">
-    <div class="bot-panel" role="dialog" aria-label="Asistente de ayuda">
-      <div class="bot-header">
-        <div style="width:36px;height:36px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">🌸</div>
-        <div>
-          <div style="font-weight:800">Floristería Castirales</div>
-          <div style="font-size:12px;color:#333">Asistente • Preguntas frecuentes</div>
-        </div>
-      </div>
-
-      <div class="bot-body" id="botBody">
-        <div class="bot-msg msg-bot">
+</div>
+<div id="botPanel" style="display:none; margin-top:10px;">
+<div aria-label="Asistente de ayuda" class="bot-panel" role="dialog">
+<div class="bot-header">
+<div style="width:36px;height:36px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">🌸</div>
+<div>
+<div style="font-weight:800">Floristería Castirales</div>
+<div style="font-size:12px;color:#333">Asistente • Preguntas frecuentes</div>
+</div>
+</div>
+<div class="bot-body" id="botBody">
+<div class="bot-msg msg-bot">
           ¡Hola 👋! Bienvenid@ a Floristería Castirales 🌸. Soy tu asistente virtual, puedes probar con:
           <button class="quick-btn" onclick="botQuick('horario')">horario</button>
-          <button class="quick-btn" onclick="botQuick('envios')">envíos</button>
-          <button class="quick-btn" onclick="botQuick('pagos')">formas de pago</button>
-          <button class="quick-btn" onclick="botQuick('reservar')">reservas</button>
-          <button class="quick-btn" onclick="botQuick('personalizar')">personalizar</button>
-        </div>
-      </div>
-
-      <div class="bot-footer">
-        <input id="botInput" class="bot-input" placeholder="Escribe tu pregunta o 'comprar Ramo Primavera'...">
-        <button class="send" onclick="botSend()">Enviar</button>
-      </div>
-    </div>
-  </div>
+<button class="quick-btn" onclick="botQuick('envios')">envíos</button>
+<button class="quick-btn" onclick="botQuick('pagos')">formas de pago</button>
+<button class="quick-btn" onclick="botQuick('reservar')">reservas</button>
+<button class="quick-btn" onclick="botQuick('personalizar')">personalizar</button>
 </div>
-
+</div>
+<div class="bot-footer">
+<input class="bot-input" id="botInput" placeholder="Escribe tu pregunta o 'comprar Ramo Primavera'..."/>
+<button class="send" onclick="botSend()">Enviar</button>
+</div>
+</div>
+</div>
+</div>
 <script>
 /* ===== CONFIG POR DEFECTO (ya con el número) ===== */
 const waNumber = '522213387157'; // México: 52 + lada + número (sin espacios)
@@ -2933,9 +2795,6 @@ botInput.addEventListener('keypress', function(e){
   if (e.key === 'Enter') botSend();
 });
 </script>
-
-
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const botToggle = document.getElementById('botToggle');
@@ -2944,8 +2803,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-
 <script>
 document.addEventListener('DOMContentLoaded', function(){
     // Oculta visualmente el enlace "Descargar Catálogo PDF" si existe
@@ -2970,6 +2827,17 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 </script>
-
-</body>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var btn = document.querySelector('.nav-toggle');
+  var header = document.querySelector('header');
+  if(!btn || !header) return;
+  btn.addEventListener('click', function(){
+    header.classList.toggle('nav-open');
+    // toggle aria-expanded
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', (!expanded).toString());
+  });
+});
+  </body>
 </html>
