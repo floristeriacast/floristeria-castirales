@@ -47,7 +47,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:'Montserrat',system-ui,Arial;
+      font-family:'Montserrat',system-ui,Arial,Helvetica;
       color:var(--text-dark);
       background:var(--candy-floss);
       -webkit-font-smoothing:antialiased;
@@ -79,7 +79,7 @@
     .post-hero img:hover{transform:scale(1.02)}
     .post-body{padding:1.75rem}
     .back{display:inline-flex;gap:.6rem;align-items:center;text-decoration:none;color:var(--text-dark);font-weight:600;margin-bottom:1rem}
-    .back .icon{color:var(--bubble-gum)}
+    .back .icon{ color: var(--bubble-gum); } /* <-- flecha rosa, consistente en todas las entradas */
     .post-title{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--bubble-gum);margin:0 0 .6rem 0;line-height:1.08}
     .meta{color:var(--muted);font-size:.95rem;margin-bottom:.9rem;display:flex;gap:1rem;flex-wrap:wrap}
     .lead{font-size:1.03rem;color:var(--text-dark);margin-bottom:1rem}
@@ -136,7 +136,8 @@
       <figure class="post-hero" role="img" aria-label="Simbología del color de las flores">
         <img
           src="https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        
+          
+ 
           
           sizes="(max-width:600px) 100vw, 1200px"
           alt="Distintos colores de flores" loading="lazy">
@@ -144,7 +145,7 @@
 
       <div class="post-body">
         <a class="back" href="index.html#blog" id="backToBlog" aria-label="Volver al blog">
-          <i class="icon fas fa-arrow-left" aria-hidden="true" style="color:var(--bubble-gum)"></i> Volver al blog
+          <i class="icon fas fa-arrow-left" aria-hidden="true"></i> Volver al blog
         </a>
 
         <header>
@@ -266,5 +267,7 @@
       if (heroImg) heroImg.setAttribute('tabindex','0');
     })();
   </script>
+  <!-- Font Awesome (iconos) -->
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 </body>
 </html>
