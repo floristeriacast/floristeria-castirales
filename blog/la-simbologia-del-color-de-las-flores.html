@@ -10,12 +10,15 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="La simbología del color de las flores — Castirales Floristería">
   <meta property="og:description" content="Significados tradicionales de los colores en las flores: rojo, rosa, blanco, amarillo y morado.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0">
   <meta property="og:url" content="https://toebosolutions.github.io/blog/simbologia-color-flores.html">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome CDN (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <script type="application/ld+json">
   {
@@ -23,7 +26,7 @@
     "@type":"Article",
     "headline":"La simbología del color de las flores",
     "description":"Significados tradicionales de los colores en las flores: rojo, rosa, blanco, amarillo y morado.",
-    "image":"https://source.unsplash.com/1400x900/?flowers,color,flor",
+    "image":"https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0",
     "author":{"@type":"Organization","name":"Castirales Floristería"},
     "publisher":{"@type":"Organization","name":"Castirales Floristería","logo":{"@type":"ImageObject","url":"https://toebosolutions.github.io/images/logo.png"}},
     "datePublished":"2023-05-15"
@@ -135,10 +138,12 @@
     <article class="post" aria-labelledby="post-title">
       <figure class="post-hero" role="img" aria-label="Simbología del color de las flores">
         <img
-          src="https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          
- 
-          
+          src="https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0"
+          srcset="
+            https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0 800w,
+            https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0 1200w,
+            https://images.unsplash.com/photo-1610444833203-69c3b23321a0?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0 1600w
+          "
           sizes="(max-width:600px) 100vw, 1200px"
           alt="Distintos colores de flores" loading="lazy">
       </figure>
@@ -222,13 +227,14 @@
   <script>
     (function(){
       const back = document.getElementById('backToBlog');
-      const originalHref = back.getAttribute('href');
+      const originalHref = back && back.getAttribute ? back.getAttribute('href') : 'index.html#blog';
 
       async function tryNavigate(hrefs){
         for(const h of hrefs){
+          if(!h) continue;
           try {
             const resp = await fetch(h, { method: 'HEAD' });
-            if (resp && resp.ok) { window.location.href = h; return true; }
+            if (resp && (resp.status >=200 && resp.status < 400)) { window.location.href = h; return true; }
           } catch(e){
             // ignore errors and continue
           }
@@ -236,38 +242,38 @@
         return false;
       }
 
-      back.addEventListener('click', function(e){
-        e.preventDefault();
-        const candidates = [
-          originalHref,
-          'index.html#blog',
-          '/index.html#blog',
-          '/blog/index.html#blog',
-          window.location.origin + '/index.html#blog'
-        ];
+      if(back){
+        back.addEventListener('click', function(e){
+          e.preventDefault();
+          const candidates = [
+            originalHref,
+            'index.html#blog',
+            '/index.html#blog',
+            '/blog/index.html#blog',
+            window.location.origin + '/index.html#blog'
+          ];
 
-        (async function(){
-          const ok = await tryNavigate(candidates);
-          if (ok) return;
+          (async function(){
+            const ok = await tryNavigate(candidates);
+            if (ok) return;
 
-          if (window.history.length > 1) {
-            window.history.back();
-            setTimeout(function(){
-              if (document.visibilityState !== 'hidden') window.location.href = '/';
-            }, 700);
-            return;
-          }
+            if (window.history.length > 1) {
+              window.history.back();
+              setTimeout(function(){
+                if (document.visibilityState !== 'hidden') window.location.href = '/';
+              }, 700);
+              return;
+            }
 
-          window.location.href = '/';
-        })();
-      });
+            window.location.href = '/';
+          })();
+        });
+      }
 
       // Make hero image focusable for keyboard users
       const heroImg = document.querySelector('.post-hero img');
       if (heroImg) heroImg.setAttribute('tabindex','0');
     })();
   </script>
-  <!-- Font Awesome (iconos) -->
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 </body>
 </html>
