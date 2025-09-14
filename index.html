@@ -1436,6 +1436,55 @@ footer mark, footer .highlight, footer .tag-highlight {
 html, body { overflow-x: visible !important; }
 
 </style>
+
+<!-- FLOATING BUTTONS VISIBILITY OVERRIDE - Ensures visible on all mobile viewports -->
+<style>
+/* Force floating actions to appear fully inside the viewport on mobiles */
+.floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
+  right: 12px !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  overflow: visible !important;
+}
+
+/* Base sizes (slightly smaller to avoid edge clipping) */
+.whatsapp-button, .floating-cart, .bot-wrap, .bot-toggle {
+  width: 62px !important;
+  height: 62px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+
+/* Vertical stacking order (WhatsApp at bottom, cart above it, chatbot above cart) */
+.whatsapp-button { bottom: 16px !important; z-index:2147483647 !important; }
+.floating-cart { bottom: calc(16px + 72px) !important; z-index:2147483646 !important; }
+.bot-wrap { bottom: calc(16px + 144px) !important; z-index:2147483645 !important; }
+
+/* Extra small devices: reduce sizes and spacing */
+@media (max-width: 420px) {
+  .whatsapp-button, .floating-cart, .bot-wrap, .bot-toggle {
+    width: 54px !important;
+    height: 54px !important;
+  }
+  .whatsapp-button { bottom: 12px !important; right: 10px !important; }
+  .floating-cart { bottom: calc(12px + 64px) !important; right: 10px !important; }
+  .bot-wrap { bottom: calc(12px + 128px) !important; right: 10px !important; }
+}
+
+/* Ensure no parent container hides them horizontally */
+html, body { overflow-x: visible !important; }
+
+/* Keep icons contained */
+.whatsapp-button i, .floating-cart i, .bot-wrap i, .bot-toggle i {
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+}
+
+/* Safety: ensure these rules override earlier mistaken declarations */
+</style>
+
 </head>
 <body>
 <a class="whatsapp-button" href="https://wa.me/522213387157">
