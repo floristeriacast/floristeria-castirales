@@ -1437,11 +1437,12 @@ html, body { overflow-x: visible !important; }
 
 </style>
 
-<!-- FLOATING BUTTONS VISIBILITY OVERRIDE - Ensures visible on all mobile viewports -->
+
+<!-- FLOATING BUTTONS VISIBILITY OVERRIDE - Ensures visible on all mobile viewports (moved to LEFT) -->
 <style>
-/* Force floating actions to appear fully inside the viewport on mobiles */
+/* Force floating actions to appear fully inside the viewport on mobiles (left side) */
 .floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-  right: 12px !important;
+  left: 12px !important;
   box-sizing: border-box !important;
   visibility: visible !important;
   transform: none !important;
@@ -1468,9 +1469,9 @@ html, body { overflow-x: visible !important; }
     width: 54px !important;
     height: 54px !important;
   }
-  .whatsapp-button { bottom: 12px !important; right: 10px !important; }
-  .floating-cart { bottom: calc(12px + 64px) !important; right: 10px !important; }
-  .bot-wrap { bottom: calc(12px + 128px) !important; right: 10px !important; }
+  .whatsapp-button { bottom: 12px !important; left: 10px !important; }
+  .floating-cart { bottom: calc(12px + 64px) !important; left: 10px !important; }
+  .bot-wrap { bottom: calc(12px + 128px) !important; left: 10px !important; }
 }
 
 /* Ensure no parent container hides them horizontally */
@@ -1484,6 +1485,7 @@ html, body { overflow-x: visible !important; }
 
 /* Safety: ensure these rules override earlier mistaken declarations */
 </style>
+
 
 </head>
 <body>
