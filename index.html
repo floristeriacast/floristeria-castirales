@@ -221,7 +221,7 @@
         .cart-count {
             position: absolute;
             top: -8px;
-            right: -10px;
+        left: -10px;
             background-color: var(--wintergreen); /* Color secundario */
             color: white;
             border-radius: 50%;
@@ -694,7 +694,7 @@
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             width: 70px;
             height: 70px;
             background-color: #25D366;
@@ -815,7 +815,7 @@
         .floating-cart {
             position: fixed;
             bottom: 110px;
-            right: 30px;
+            left: 30px;
             width: 70px;
             height: 70px;
             background: var(--bubble-gum); /* Color primario */
@@ -1207,7 +1207,7 @@
 .bot-wrap { z-index: 99999; 
   bottom: 190px !important;
 
-  right: 20px !important;!important;
+  left: 20px !important;
 }
 
 /* Asegura que el chatbot esté por encima visualmente y no toque el WhatsApp */
@@ -1383,110 +1383,6 @@ footer mark, footer .highlight, footer .tag-highlight {
 <meta content="index, follow" name="robots"/>
 <link href="/sitemap.xml" rel="sitemap"/>
 </link>
-
-<style>
-
-/* ===== ADDED: Stronger floating action styles (ensure visible and inside viewport) ===== */
-.floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-  position: fixed !important;
-  right: 12px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 50% !important;
-  color: #fff !important;
-  box-shadow: 0 8px 26px rgba(0,0,0,0.12) !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  visibility: visible !important;
-  z-index: 2147483647 !important; /* max z-index to ensure top */
-  overflow: visible !important;
-  transition: right 0.18s ease, bottom 0.18s ease, opacity 0.12s ease;
-  cursor: pointer !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-/* Individual colors for clarity (override if you prefer other colors) */
-.whatsapp-button { background: #25D366 !important; bottom: 20px !important; }
-.floating-cart { background: #ffa8c5 !important; bottom: calc(20px + 76px) !important; }
-.bot-wrap { background: #ff90a3 !important; bottom: calc(20px + 152px) !important; }
-
-/* Smaller mobiles */
-@media (max-width: 420px) {
-  .floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-    width: 56px !important;
-    height: 56px !important;
-    right: 10px !important;
-  }
-  .floating-cart { bottom: calc(16px + 64px) !important; }
-  .bot-wrap { bottom: calc(16px + 128px) !important; }
-}
-
-/* If icons inside are too large, scale them down */
-.whatsapp-button img, .floating-cart img, .bot-wrap img, .floating-action img {
-  max-width: 60% !important;
-  max-height: 60% !important;
-}
-
-/* Safety: prevent parent overflow from hiding them */
-html, body { overflow-x: visible !important; }
-
-</style>
-
-
-<!-- FLOATING BUTTONS VISIBILITY OVERRIDE - Ensures visible on all mobile viewports (moved to LEFT) -->
-<style>
-/* Force floating actions to appear fully inside the viewport on mobiles (left side) */
-.floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-  left: 12px !important;
-  box-sizing: border-box !important;
-  visibility: visible !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  overflow: visible !important;
-}
-
-/* Base sizes (slightly smaller to avoid edge clipping) */
-.whatsapp-button, .floating-cart, .bot-wrap, .bot-toggle {
-  width: 62px !important;
-  height: 62px !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
-}
-
-/* Vertical stacking order (WhatsApp at bottom, cart above it, chatbot above cart) */
-.whatsapp-button { bottom: 16px !important; z-index:2147483647 !important; }
-.floating-cart { bottom: calc(16px + 72px) !important; z-index:2147483646 !important; }
-.bot-wrap { bottom: calc(16px + 144px) !important; z-index:2147483645 !important; }
-
-/* Extra small devices: reduce sizes and spacing */
-@media (max-width: 420px) {
-  .whatsapp-button, .floating-cart, .bot-wrap, .bot-toggle {
-    width: 54px !important;
-    height: 54px !important;
-  }
-  .whatsapp-button { bottom: 12px !important; left: 10px !important; }
-  .floating-cart { bottom: calc(12px + 64px) !important; left: 10px !important; }
-  .bot-wrap { bottom: calc(12px + 128px) !important; left: 10px !important; }
-}
-
-/* Ensure no parent container hides them horizontally */
-html, body { overflow-x: visible !important; }
-
-/* Keep icons contained */
-.whatsapp-button i, .floating-cart i, .bot-wrap i, .bot-toggle i {
-  font-size: 1.2rem !important;
-  line-height: 1 !important;
-}
-
-/* Safety: ensure these rules override earlier mistaken declarations */
-</style>
-
-
 </head>
 <body>
 <a class="whatsapp-button" href="https://wa.me/522213387157">
@@ -2794,7 +2690,7 @@ Spider-Man
 <div class="posts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="Cómo cuidar tus flores para que duren más" loading="lazy" src="https://plus.unsplash.com/premium_photo-1676475964992-6404b8db0b53?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="Cómo cuidar tus flores para que duren más" loading="lazy" src="https://source.unsplash.com/1200x800/?consejos,cuidados,flores" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">Cómo cuidar tus flores para que duren más</h3>
@@ -2806,7 +2702,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="Ideas para decorar tu hogar con arreglos florales" loading="lazy" src="https://plus.unsplash.com/premium_photo-1726736534464-2947bb4eb288?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="Ideas para decorar tu hogar con arreglos florales" loading="lazy" src="https://source.unsplash.com/1200x800/?decoracion,hogar,arreglos,florales" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">Ideas para decorar tu hogar con arreglos florales</h3>
@@ -2814,12 +2710,11 @@ Spider-Man
 <a class="btn" href="./blog/ideas-para-decorar-tu-hogar-con-arreglos-florales.html" style="padding:8px 14px;font-size:0.9rem;">
         Leer más
        </a>
-
 </div>
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="La simbología del color de las flores" loading="lazy" src="https://images.unsplash.com/photo-1715263217377-27294e87b8fa?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="La simbología del color de las flores" loading="lazy" src="https://source.unsplash.com/1200x800/?simbologia,color,flores" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">La simbología del color de las flores</h3>
@@ -2827,12 +2722,11 @@ Spider-Man
 <a class="btn" href="./blog/la-simbologia-del-color-de-las-flores.html" style="padding:8px 14px;font-size:0.9rem;">
         Leer más
        </a>
-
 </div>
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="Naturales vs artificiales: ¿cuáles son mejores para ti?" loading="lazy" src="https://images.unsplash.com/photo-1713917964889-625a0a91b8a7?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="Naturales vs artificiales: ¿cuáles son mejores para ti?" loading="lazy" src="https://source.unsplash.com/1200x800/?flores,naturales,artificiales" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">Naturales vs artificiales: ¿cuáles son mejores para ti?</h3>
@@ -2844,7 +2738,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="Errores comunes al cuidar flores en casa" loading="lazy" src="https://plus.unsplash.com/premium_photo-1661698075272-bc3e6308f218?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="Errores comunes al cuidar flores en casa" loading="lazy" src="https://source.unsplash.com/1200x800/?errores,cuidar,flores" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">Errores comunes al cuidar flores en casa</h3>
@@ -2856,7 +2750,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="¿Qué flor representa tu personalidad?" loading="lazy" src="https://plus.unsplash.com/premium_photo-1723914229303-f19a030c18e3?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="¿Qué flor representa tu personalidad?" loading="lazy" src="https://source.unsplash.com/1200x800/?que,flor,eres,personalidad" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">¿Qué flor representa tu personalidad?</h3>
@@ -2868,7 +2762,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="Beneficios de tener flores frescas cerca de ti" loading="lazy" src="https://images.unsplash.com/photo-1679330041218-268681075940?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="Beneficios de tener flores frescas cerca de ti" loading="lazy" src="https://source.unsplash.com/1200x800/?beneficios,flores,frescas" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">Beneficios de tener flores frescas cerca de ti</h3>
@@ -2880,7 +2774,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="¿Por qué regalar flores nunca pasa de moda?" loading="lazy" src="https://plus.unsplash.com/premium_photo-1661592638612-541f259fa5b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="¿Por qué regalar flores nunca pasa de moda?" loading="lazy" src="https://source.unsplash.com/1200x800/?por,que,regalar,flores" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">¿Por qué regalar flores nunca pasa de moda?</h3>
@@ -2892,7 +2786,7 @@ Spider-Man
 </article>
 <article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
 <div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
-<img alt="5 formas en que las flores elevan tu estado de ánimo" loading="lazy" src="https://plus.unsplash.com/premium_photo-1710608360420-b42579df9a8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%;height:100%;object-fit:cover;"/>
+<img alt="5 formas en que las flores elevan tu estado de ánimo" loading="lazy" src="https://source.unsplash.com/1200x800/?flores,animan,estado,de,animo" style="width:100%;height:100%;object-fit:cover;"/>
 </div>
 <div class="post-content">
 <h3 style="font-size:1.05rem;margin-bottom:8px;">5 formas en que las flores elevan tu estado de ánimo</h3>
@@ -2900,7 +2794,166 @@ Spider-Man
 <a class="btn" href="./blog/5-formas-en-que-las-flores-elevan-tu-estado-de-animo.html" style="padding:8px 14px;font-size:0.9rem;">
         Leer más
        </a>
-
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Ideas de regalos con flores para cumpleaños
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre ideas de regalos con flores para cumpleaños.
+       </p>
+<a class="btn" href="/blog/ideas-de-regalos-con-flores-para-cumpleanos.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Flores perfectas para el Día de las Madres
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre flores perfectas para el día de las madres.
+       </p>
+<a class="btn" href="/blog/flores-perfectas-para-el-dia-de-las-madres.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        ¿Qué flor representa tu personalidad?
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre ¿qué flor representa tu personalidad?.
+       </p>
+<a class="btn" href="/blog/que-flor-representa-tu-personalidad.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        ¿Cómo elegir un florero adecuado para tu ramo?
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre ¿cómo elegir un florero adecuado para tu ramo?.
+       </p>
+<a class="btn" href="/blog/como-elegir-un-florero-adecuado-para-tu-ramo.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Flores que purifican el aire en tu hogar
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre flores que purifican el aire en tu hogar.
+       </p>
+<a class="btn" href="/blog/flores-que-purifican-el-aire-en-tu-hogar.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Beneficios de tener flores frescas cerca de ti
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre beneficios de tener flores frescas cerca de ti.
+       </p>
+<a class="btn" href="/blog/beneficios-de-tener-flores-frescas-cerca-de-ti.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Los arreglos más populares en bodas mexicanas
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre los arreglos más populares en bodas mexicanas.
+       </p>
+<a class="btn" href="/blog/los-arreglos-mas-populares-en-bodas-mexicanas.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        Decoración con flores para eventos pequeños
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre decoración con flores para eventos pequeños.
+       </p>
+<a class="btn" href="/blog/decoracion-con-flores-para-eventos-pequenos.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        ¿Por qué regalar flores nunca pasa de moda?
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre ¿por qué regalar flores nunca pasa de moda?.
+       </p>
+<a class="btn" href="/blog/por-que-regalar-flores-nunca-pasa-de-moda.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
+</div>
+</article>
+<article class="post-card" style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.05);">
+<div class="post-thumb" style="height:140px;overflow:hidden;border-radius:8px;margin-bottom:12px;">
+<img alt="miniatura" loading="lazy" src="/images/blog-placeholder.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+</div>
+<div class="post-content">
+<h3 style="font-size:1.05rem;margin-bottom:8px;">
+        5 formas en que las flores elevan tu estado de ánimo
+       </h3>
+<p style="color:#555;font-size:0.95rem;margin-bottom:12px;">
+        Consejos prácticos y sencillos sobre 5 formas en que las flores elevan tu estado de ánimo.
+       </p>
+<a class="btn" href="/blog/5-formas-en-que-las-flores-elevan-tu-estado-de-animo.html" style="padding:8px 14px;font-size:0.9rem;">
+        Leer más
+       </a>
 </div>
 </article>
 </div>
@@ -3520,7 +3573,7 @@ if (typeof updateCart === 'function') {
   }
 
   /* Toggle botón con animación entre --accent y --whatsapp */
-  .bot-wrap { position: fixed; right: 18px; bottom: 110px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
+  .bot-wrap { position: fixed; left: ;: 18px; bottom: 110px; z-index: 99999; font-family: 'Montserrat', Inter, Arial, sans-serif; }
   
 /* --- REEMPLAZAR: estilos previos de .bot-toggle --- */
 
@@ -3569,74 +3622,7 @@ if (typeof updateCart === 'function') {
   .bot-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #ddd; outline:none; }
   .bot-footer button.send { background:var(--accent); color: var(--dark); border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
   @media (max-width:420px){ .bot-panel{ width:92vw; height:70vh } }
-  
-
-/* ===== CHANGES ADDED: Fix header alignment and floating buttons on mobile ===== */
-/* ===== Corregir header para móviles: mantener todo en una sola línea ===== */
-@media (max-width: 768px) {
-  /* Forzar fila y centrado */
-  .header-container {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 12px;
-    padding: 8px 0;
-  }
-
-  /* Logo: que no se rompa y se centre verticalmente */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .logo-img { width: 56px; height: 56px; }
-
-  /* Nombre y tagline: reducir tamaño para caber mejor */
-  .logo-text .brand { font-size: 1.15rem; line-height: 1; }
-  .logo-text .tagline { font-size: 0.7rem; letter-spacing: 1.5px; }
-
-  /* Mostrar solo el botón hamburguesa (ocultar nav) */
-  nav { display: none !important; }
-  .nav-toggle { display: block !important; margin-left: 8px; }
-
-  /* Acciones (carrito, etc.) alineadas a la derecha */
-  .header-actions {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin-left: 8px;
-  }
-
-  /* Asegurar targets táctiles cómodos */
-  .nav-toggle, .cart-icon { min-width: 48px; min-height: 48px; padding: 8px; border-radius: 8px; }
-
-  /* Evitar que el header crezca demasiado */
-  header { padding: 8px 0 !important; }
-}
-
-/* ===== Forzar visibilidad y orden vertical de botones flotantes en móvil ===== */
-.whatsapp-button, .floating-cart, .bot-wrap {
-  right: 18px !important;
-  visibility: visible !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  box-shadow: 0 8px 26px rgba(0,0,0,0.12) !important;
-}
-
-/* Posicionamiento vertical (apilar sin que se oculten) */
-.whatsapp-button { bottom: 30px !important; z-index: 99998 !important; }
-.floating-cart { bottom: 110px !important; z-index: 99997 !important; }
-.bot-wrap { bottom: 190px !important; z-index: 99999 !important; }
-
-/* Ajuste fino para pantallas muy pequeñas */
-@media (max-width: 420px) {
-  .whatsapp-button, .floating-cart, .bot-wrap { right: 12px !important; }
-  .whatsapp-button { bottom: 22px !important; width: 60px !important; height: 60px !important; }
-  .floating-cart, .bot-wrap { width: 60px !important; height: 60px !important; }
-}
-
-</style>
+  </style>
 <div aria-live="polite" class="bot-wrap" id="botWrap">
 <div style="display:flex; gap:10px; align-items:flex-end;">
 <button aria-label="Abrir chat" class="bot-toggle" id="botToggle" title="Abrir chat">
@@ -3831,8 +3817,6 @@ botInput.addEventListener('keypress', function(e){
         if (a.textContent && a.textContent.trim().toLowerCase().includes('descargar catálogo pdf')){
             a.style.display = 'none';
             a.classList.add('download-catalog-hidden');
-        }
-    });
 
     // Actualiza el texto del copyright a "2023-<año actual>" si corresponde
     var copyrightEl = document.querySelector('.copyright');
@@ -3850,62 +3834,5 @@ botInput.addEventListener('keypress', function(e){
   </script>
 <script>
 </script>
-
-
-<!-- ===== CHANGES ADDED: Ensure floating buttons visible on load ===== -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.whatsapp-button, .floating-cart, .bot-wrap').forEach(function(el){
-      if (!el) return;
-      el.style.right = '18px';
-      el.style.transform = 'none';
-      el.style.visibility = 'visible';
-    });
-  });
-</script>
-
-
-
-<!-- ===== ADDED: forceMoveFloatingButtonsToBody - ensure floating buttons are in body and fixed ===== -->
-<script>
-(function(){
-  function ensureFloatingButtons() {
-    var selectors = ['.whatsapp-button', '.floating-cart', '.bot-wrap', '.floating-action'];
-    selectors.forEach(function(sel) {
-      var el = document.querySelector(sel);
-      if (!el) return;
-      try {
-        // move element to body so it's not affected by transformed ancestors
-        if (el.parentElement !== document.body) {
-          document.body.appendChild(el);
-        }
-        // enforce fixed positioning and visible offsets
-        el.style.position = 'fixed';
-        el.style.right = '12px';
-        el.style.transform = 'none';
-        el.style.visibility = 'visible';
-        el.style.boxSizing = 'border-box';
-        el.style.zIndex = '2147483647';
-        // ensure touch targets
-        el.style.minWidth = '44px';
-        el.style.minHeight = '44px';
-      } catch(e) { console.warn('floating-button adjust failed', e); }
-    });
-  }
-
-  // Run on load and also a bit later in case scripts dynamically re-add/modify buttons
-  document.addEventListener('DOMContentLoaded', function(){ ensureFloatingButtons(); });
-  window.addEventListener('load', function(){ setTimeout(ensureFloatingButtons, 250); });
-  // Also observe DOM mutations to reapply if needed
-  try {
-    var obs = new MutationObserver(function(m){
-      ensureFloatingButtons();
-    });
-    obs.observe(document.documentElement || document.body, { childList:true, subtree:true });
-  } catch(e){ /* ignore on old browsers */ }
-})();
-</script>
-<!-- ===== end forceMoveFloatingButtonsToBody ===== -->
-
 </body>
 </html>
