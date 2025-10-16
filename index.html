@@ -855,7 +855,7 @@
         .cart-summary {
             position: fixed;
             bottom: 190px;
-            right: 30px;
+            left: 30px;
             width: 350px;
             background: var(--candy-floss); /* Fondo principal */
             border-radius: 20px;
@@ -1207,7 +1207,7 @@
 .bot-wrap { z-index: 99999; 
   bottom: 190px !important;
 
-  left: 20px !important;
+  right: 20px !important;!important;
 }
 
 /* Asegura que el chatbot esté por encima visualmente y no toque el WhatsApp */
@@ -1280,23 +1280,14 @@ footer h2, footer h3, footer h4, footer h5, footer h6,
 }
 
 
-/* Alineación uniforme botones flotantes */
-.bot-wrap { right: 18px !important; }
-.bot-toggle, .floating-cart, .whatsapp-button {
-  width: 70px !important;
-  height: 70px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-
-/* Alineación vertical perfecta de botones flotantes */
-.bot-wrap, .floating-cart, .whatsapp-button {
+/* Alineación vertical perfecta de botones flotantes (bot-wrap EXCLUIDO para no mover el contenedor del chat) */
+.floating-cart, .whatsapp-button {
   position: fixed !important;
-  right: 18px !important;
+  left: 18px !important;
 }
+
+
+
 
 .bot-toggle, .floating-cart, .whatsapp-button {
   width: 70px !important;
@@ -1383,59 +1374,6 @@ footer mark, footer .highlight, footer .tag-highlight {
 <meta content="index, follow" name="robots"/>
 <link href="/sitemap.xml" rel="sitemap"/>
 </link>
-
-<style>
-
-/* ===== ADDED: Stronger floating action styles (ensure visible and inside viewport) ===== */
-.floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-  position: fixed !important;
-  left: 12px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 50% !important;
-  color: #fff !important;
-  box-shadow: 0 8px 26px rgba(0,0,0,0.12) !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  visibility: visible !important;
-  z-index: 2147483647 !important; /* max z-index to ensure top */
-  overflow: visible !important;
-  transition: right 0.18s ease, bottom 0.18s ease, opacity 0.12s ease;
-  cursor: pointer !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-/* Individual colors for clarity (override if you prefer other colors) */
-.whatsapp-button { background: #25D366 !important; bottom: 20px !important; }
-.floating-cart { background: #ffa8c5 !important; bottom: calc(20px + 76px) !important; }
-.bot-wrap { background: #ff90a3 !important; bottom: calc(20px + 152px) !important; }
-
-/* Smaller mobiles */
-@media (max-width: 420px) {
-  .floating-action, .whatsapp-button, .floating-cart, .bot-wrap {
-    width: 56px !important;
-    height: 56px !important;
-    right: 10px !important;
-  }
-  .floating-cart { bottom: calc(16px + 64px) !important; }
-  .bot-wrap { bottom: calc(16px + 128px) !important; }
-}
-
-/* If icons inside are too large, scale them down */
-.whatsapp-button img, .floating-cart img, .bot-wrap img, .floating-action img {
-  max-width: 60% !important;
-  max-height: 60% !important;
-}
-
-/* Safety: prevent parent overflow from hiding them */
-html, body { overflow-x: visible !important; }
-
-</style>
 </head>
 <body>
 <a class="whatsapp-button" href="https://wa.me/522213387157">
@@ -3475,10 +3413,16 @@ if (typeof updateCart === 'function') {
 
 /* Botón del Chatbot — igual estilo que el carrito */
 .bot-toggle {
-  width: 70px;               /* igual tamaño que .floating-cart */
+  position: fixed !important;
+  left: 18px !important;
+  bottom: 190px !important;   /* sitúa el botón arriba del carrito y WhatsApp */
+  right: auto !important;
+  z-index: 99999 !important;
+
+  width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: var(--bubble-gum); /* mismo rosa que carrito */
+  background: var(--bubble-gum);
   color: white;
   border: none;
   display: flex;
@@ -3488,6 +3432,8 @@ if (typeof updateCart === 'function') {
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0,0,0,0.18);
   transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
   /* conservar posicionamiento por .bot-wrap (ajustado por JS) */
 }
 
@@ -3518,74 +3464,7 @@ if (typeof updateCart === 'function') {
   .bot-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #ddd; outline:none; }
   .bot-footer button.send { background:var(--accent); color: var(--dark); border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
   @media (max-width:420px){ .bot-panel{ width:92vw; height:70vh } }
-  
-
-/* ===== CHANGES ADDED: Fix header alignment and floating buttons on mobile ===== */
-/* ===== Corregir header para móviles: mantener todo en una sola línea ===== */
-@media (max-width: 768px) {
-  /* Forzar fila y centrado */
-  .header-container {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 12px;
-    padding: 8px 0;
-  }
-
-  /* Logo: que no se rompa y se centre verticalmente */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .logo-img { width: 56px; height: 56px; }
-
-  /* Nombre y tagline: reducir tamaño para caber mejor */
-  .logo-text .brand { font-size: 1.15rem; line-height: 1; }
-  .logo-text .tagline { font-size: 0.7rem; letter-spacing: 1.5px; }
-
-  /* Mostrar solo el botón hamburguesa (ocultar nav) */
-  nav { display: none !important; }
-  .nav-toggle { display: block !important; margin-left: 8px; }
-
-  /* Acciones (carrito, etc.) alineadas a la derecha */
-  .header-actions {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin-left: 8px;
-  }
-
-  /* Asegurar targets táctiles cómodos */
-  .nav-toggle, .cart-icon { min-width: 48px; min-height: 48px; padding: 8px; border-radius: 8px; }
-
-  /* Evitar que el header crezca demasiado */
-  header { padding: 8px 0 !important; }
-}
-
-/* ===== Forzar visibilidad y orden vertical de botones flotantes en móvil ===== */
-.whatsapp-button, .floating-cart, .bot-wrap {
-  right: 18px !important;
-  visibility: visible !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  box-shadow: 0 8px 26px rgba(0,0,0,0.12) !important;
-}
-
-/* Posicionamiento vertical (apilar sin que se oculten) */
-.whatsapp-button { bottom: 30px !important; z-index: 99998 !important; }
-.floating-cart { bottom: 110px !important; z-index: 99997 !important; }
-.bot-wrap { bottom: 190px !important; z-index: 99999 !important; }
-
-/* Ajuste fino para pantallas muy pequeñas */
-@media (max-width: 420px) {
-  .whatsapp-button, .floating-cart, .bot-wrap { left: 12px !important; }
-  .whatsapp-button { bottom: 22px !important; width: 60px !important; height: 60px !important; }
-  .floating-cart, .bot-wrap { width: 60px !important; height: 60px !important; }
-}
-
-</style>
+  </style>
 <div aria-live="polite" class="bot-wrap" id="botWrap">
 <div style="display:flex; gap:10px; align-items:flex-end;">
 <button aria-label="Abrir chat" class="bot-toggle" id="botToggle" title="Abrir chat">
@@ -3799,62 +3678,5 @@ botInput.addEventListener('keypress', function(e){
   </script>
 <script>
 </script>
-
-
-<!-- ===== CHANGES ADDED: Ensure floating buttons visible on load ===== -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.whatsapp-button, .floating-cart, .bot-wrap').forEach(function(el){
-      if (!el) return;
-      el.style.left = '18px';
-      el.style.transform = 'none';
-      el.style.visibility = 'visible';
-    });
-  });
-</script>
-
-
-
-<!-- ===== ADDED: forceMoveFloatingButtonsToBody - ensure floating buttons are in body and fixed ===== -->
-<script>
-(function(){
-  function ensureFloatingButtons() {
-    var selectors = ['.whatsapp-button', '.floating-cart', '.bot-wrap', '.floating-action'];
-    selectors.forEach(function(sel) {
-      var el = document.querySelector(sel);
-      if (!el) return;
-      try {
-        // move element to body so it's not affected by transformed ancestors
-        if (el.parentElement !== document.body) {
-          document.body.appendChild(el);
-        }
-        // enforce fixed positioning and visible offsets
-        el.style.position = 'fixed';
-        el.style.left = '12px';
-        el.style.transform = 'none';
-        el.style.visibility = 'visible';
-        el.style.boxSizing = 'border-box';
-        el.style.zIndex = '2147483647';
-        // ensure touch targets
-        el.style.minWidth = '44px';
-        el.style.minHeight = '44px';
-      } catch(e) { console.warn('floating-button adjust failed', e); }
-    });
-  }
-
-  // Run on load and also a bit later in case scripts dynamically re-add/modify buttons
-  document.addEventListener('DOMContentLoaded', function(){ ensureFloatingButtons(); });
-  window.addEventListener('load', function(){ setTimeout(ensureFloatingButtons, 250); });
-  // Also observe DOM mutations to reapply if needed
-  try {
-    var obs = new MutationObserver(function(m){
-      ensureFloatingButtons();
-    });
-    obs.observe(document.documentElement || document.body, { childList:true, subtree:true });
-  } catch(e){ /* ignore on old browsers */ }
-})();
-</script>
-<!-- ===== end forceMoveFloatingButtonsToBody ===== -->
-
 </body>
 </html>
