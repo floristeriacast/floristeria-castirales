@@ -3703,5 +3703,114 @@ botInput.addEventListener('keypress', function(e){
   </script>
 <script>
 </script>
+   <!-- === Nieve: CSS === -->
+<style>
+  /* Canvas que cubre toda la ventana (no bloquea clicks) */
+  #snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* permite interactuar con la web debajo */
+    z-index: 99998;       /* si necesitas subirlo, prueba 99999 */
+    mix-blend-mode: screen; /* hace la nieve más suave sobre fondos oscuros */
+  }
+  /* Reduce movimiento si el usuario prefiere animaciones reducidas */
+  @media (prefers-reduced-motion: reduce) {
+    #snow-canvas { display: none; }
+  }
+</style>
+
+<!-- === Nieve: JavaScript (canvas) === -->
+<script>
+(function() {
+  // Si el usuario prefiere reducir animaciones, no lo dibujamos
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Crear y añadir canvas
+  const canvas = document.createElement('canvas');
+  canvas.id = 'snow-canvas';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  let w = 0, h = 0;
+  let flakes = [];
+  let angle = 0;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    createFlakes();
+  }
+
+  function createFlakes() {
+    flakes = [];
+    // Número de copos adaptativo según ancho (menos en móvil)
+    const count = Math.max(30, Math.floor(window.innerWidth / 8));
+    for (let i = 0; i < count; i++) {
+      flakes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 1 + Math.random() * 4,                     // radio (tamaño)
+        speed: 0.5 + Math.random() * 1.5,             // velocidad vertical
+        swing: Math.random() * 2 * Math.PI,          // fase para oscilación
+        swingAmp: 0.5 + Math.random() * 1.5,          // amplitud de la oscilación
+        opacity: 0.3 + Math.random() * 0.7
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    angle += 0.01;
+
+    for (let i = 0; i < flakes.length; i++) {
+      const f = flakes[i];
+      // Movimiento horizontal oscilante + ligero drift
+      f.x += Math.sin(angle + f.swing) * f.swingAmp * 0.5;
+      f.y += f.speed;
+
+      // Si sale de la pantalla lo reincorporamos por arriba
+      if (f.y > h + f.r) {
+        f.y = -f.r;
+        f.x = Math.random() * w;
+      }
+      // Si se sale horizontalmente, lo envolvemos
+      if (f.x > w + 10) f.x = -10;
+      if (f.x < -10) f.x = w + 10;
+
+      // Dibujar copo (círculo)
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(255,255,255,' + f.opacity + ')';
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // Regenerar en resize (y en orientación)
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', resize);
+
+  // Inicializar
+  resize();
+  draw();
+
+  // Opcional: Exponer una función para activar/desactivar la nieve desde la consola
+  window._toggleSnow = function(on) {
+    if (!on) {
+      cancelAnimationFrame(draw);
+      canvas.style.display = 'none';
+    } else {
+      canvas.style.display = 'block';
+      resize();
+      draw();
+    }
+  };
+})();
+</script>
+
 </body>
 </html>
