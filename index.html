@@ -3692,7 +3692,6 @@ botInput.addEventListener('keypress', function(e){
     var startYear = 2023;
     var currentYear = new Date().getFullYear();
     if (copyrightEl){
-        // Extrae el nombre del sitio (parte que sigue al año en el texto original)
         var original = copyrightEl.textContent || copyrightEl.innerText;
         var siteName = original.replace(/©?\s*\d{4}(-\d{4})?\s*/,'').trim();
         var yearText = startYear;
@@ -3701,7 +3700,35 @@ botInput.addEventListener('keypress', function(e){
     }
 
  </script>
+✅ REEMPLÁZALO POR ESTE BLOQUE CORRECTO
+html
+Copiar código
+<script>
+document.addEventListener('DOMContentLoaded', function(){
 
+  // Oculta visualmente el enlace "Descargar Catálogo PDF" si existe
+  document.querySelectorAll('a').forEach(function(a){
+      if (a.textContent && a.textContent.trim().toLowerCase().includes('descargar catálogo pdf')){
+          a.style.display = 'none';
+          a.classList.add('download-catalog-hidden');
+      }
+  });
+
+  // Actualiza el texto del copyright a "2023-<año actual>" si corresponde
+  var copyrightEl = document.querySelector('.copyright');
+  var startYear = 2023;
+  var currentYear = new Date().getFullYear();
+
+  if (copyrightEl){
+      var original = copyrightEl.textContent || copyrightEl.innerText;
+      var siteName = original.replace(/©?\s*\d{4}(-\d{4})?\s*/,'').trim();
+      var yearText = startYear;
+      if (currentYear > startYear) yearText = startYear + '-' + currentYear;
+      copyrightEl.innerText = '© ' + yearText + ' ' + siteName;
+  }
+
+}); // ← ESTA LLAVE FALTABA
+</script>
 <!-- === Nieve: CSS === -->
 <style>
   #snow-canvas {
