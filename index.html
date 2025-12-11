@@ -3699,22 +3699,21 @@ botInput.addEventListener('keypress', function(e){
         if (currentYear > startYear) yearText = startYear + '-' + currentYear;
         copyrightEl.innerText = '© ' + yearText + ' ' + siteName;
     }
-});
-  </script>
-   <!-- === Nieve: CSS === -->
+
+ </script>
+
+<!-- === Nieve: CSS === -->
 <style>
-  /* Canvas que cubre toda la ventana (no bloquea clicks) */
   #snow-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* permite interactuar con la web debajo */
-    z-index: 9999999;       /* si necesitas subirlo, prueba 99999 */
-    mix-blend-mode: screen; /* hace la nieve más suave sobre fondos oscuros */
+    pointer-events: none;
+    z-index: 9999999;
+    mix-blend-mode: screen;
   }
-  /* Reduce movimiento si el usuario prefiere animaciones reducidas */
   @media (prefers-reduced-motion: reduce) {
     #snow-canvas { display: none; }
   }
@@ -3723,10 +3722,9 @@ botInput.addEventListener('keypress', function(e){
 <!-- === Nieve: JavaScript (canvas) === -->
 <script>
 (function() {
-  // Si el usuario prefiere reducir animaciones, no lo dibujamos
+
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  // Crear y añadir canvas
   const canvas = document.createElement('canvas');
   canvas.id = 'snow-canvas';
   document.body.appendChild(canvas);
@@ -3744,16 +3742,15 @@ botInput.addEventListener('keypress', function(e){
 
   function createFlakes() {
     flakes = [];
-    // Número de copos adaptativo según ancho (menos en móvil)
     const count = Math.max(30, Math.floor(window.innerWidth / 8));
     for (let i = 0; i < count; i++) {
       flakes.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: 1 + Math.random() * 4,                     // radio (tamaño)
-        speed: 0.5 + Math.random() * 1.5,             // velocidad vertical
-        swing: Math.random() * 2 * Math.PI,          // fase para oscilación
-        swingAmp: 0.5 + Math.random() * 1.5,          // amplitud de la oscilación
+        r: 1 + Math.random() * 4,
+        speed: 0.5 + Math.random() * 1.5,
+        swing: Math.random() * 2 * Math.PI,
+        swingAmp: 0.5 + Math.random() * 1.5,
         opacity: 0.3 + Math.random() * 0.7
       });
     }
@@ -3765,20 +3762,17 @@ botInput.addEventListener('keypress', function(e){
 
     for (let i = 0; i < flakes.length; i++) {
       const f = flakes[i];
-      // Movimiento horizontal oscilante + ligero drift
+
       f.x += Math.sin(angle + f.swing) * f.swingAmp * 0.5;
       f.y += f.speed;
 
-      // Si sale de la pantalla lo reincorporamos por arriba
       if (f.y > h + f.r) {
         f.y = -f.r;
         f.x = Math.random() * w;
       }
-      // Si se sale horizontalmente, lo envolvemos
       if (f.x > w + 10) f.x = -10;
       if (f.x < -10) f.x = w + 10;
 
-      // Dibujar copo (círculo)
       ctx.beginPath();
       ctx.fillStyle = 'rgba(255,255,255,' + f.opacity + ')';
       ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
@@ -3788,25 +3782,12 @@ botInput.addEventListener('keypress', function(e){
     requestAnimationFrame(draw);
   }
 
-  // Regenerar en resize (y en orientación)
   window.addEventListener('resize', resize);
   window.addEventListener('orientationchange', resize);
 
-  // Inicializar
   resize();
   draw();
 
-  // Opcional: Exponer una función para activar/desactivar la nieve desde la consola
-  window._toggleSnow = function(on) {
-    if (!on) {
-      cancelAnimationFrame(draw);
-      canvas.style.display = 'none';
-    } else {
-      canvas.style.display = 'block';
-      resize();
-      draw();
-    }
-  };
 })();
 </script>
 
